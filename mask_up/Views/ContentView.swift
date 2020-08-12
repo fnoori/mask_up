@@ -8,7 +8,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Hi")
+                List {
+                    Text("9:00")
+                }
             }
             .navigationBarTitle("Mask Up")
             .navigationBarItems(
@@ -22,7 +24,8 @@ struct ContentView: View {
                 }) {
                     Image(systemName: "plus")
                 }.sheet(isPresented: $showNewEntryModal) {
-                    NewData().environment(\.managedObjectContext, self.managedObjectContext)
+//                    NewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
+                    NewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
                 }
             )
         }

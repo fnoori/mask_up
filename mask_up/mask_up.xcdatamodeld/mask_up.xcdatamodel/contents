@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Reminders" representedClassName="Reminders" syncable="YES" codeGenerationType="class">
-        <attribute name="days" optional="YES" attributeType="Transformable" customClassName="Array&lt;Int&gt;"/>
+    <entity name="MaskReminders" representedClassName="MaskReminders" syncable="YES">
+        <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="label" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Reminders" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="MaskReminders" positionX="-18" positionY="27" width="128" height="118"/>
     </elements>
 </model>
