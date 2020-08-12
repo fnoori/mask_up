@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct MultipleSelectionList: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var items: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     @Binding var selections: [Int]
 
@@ -18,7 +20,7 @@ struct MultipleSelectionList: View {
                     else {
                         self.selections.append(self.items.firstIndex(of: item)!)
                     }
-                }.foregroundColor(.black)
+                }.foregroundColor(self.colorScheme == .dark ? Color.white : Color.black)
             }
         }
     }
