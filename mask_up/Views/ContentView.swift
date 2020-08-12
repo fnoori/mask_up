@@ -8,11 +8,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TodayView()
+                Text("Hi")
             }
-            .navigationBarTitle("Home")
-            .navigationBarItems(trailing:
-                Button(action: {
+            .navigationBarTitle("Mask Up")
+            .navigationBarItems(
+                leading: Button(action: {
+                    print("Edit !")
+                }) {
+                    Text("Edit")
+                },
+                trailing: Button(action: {
                     self.showNewEntryModal = true
                 }) {
                     Image(systemName: "plus")
