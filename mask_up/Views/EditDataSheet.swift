@@ -1,14 +1,10 @@
 import SwiftUI
 
-struct NewDataSheet: View {
+struct EditDataSheet: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
-    
-    @State private var id: UUID = UUID()
-    @State private var label: String = ""
-    @State private var time: Date = Date()
-    @State private var daysOfWeek: [Int] = []
-    @State private var isActive: Bool = false
+  
+    @State var maskReminder: MaskReminder
     
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
@@ -21,15 +17,15 @@ struct NewDataSheet: View {
             Form {
                 Section(header: Text("General")) {
                     DatePicker(
-                        selection: $time,
+                        selection: $maskReminder.time,
                         displayedComponents: .hourAndMinute,
                         label: { Text("Reminder Time") }
                     )
-                    TextField("Label", text: $label)
+                    TextField("Label", text: $maskReminder.label)
                 }
                 
                 Section(header: Text("Repeat Days")) {
-                    MultipleSelectionList(selections: $daysOfWeek)
+                    MultipleSelectionList(selections: $maskReminder.daysOfWeek)
                 }
             }
             .navigationBarTitle("New Reminder", displayMode: .inline)
@@ -40,30 +36,17 @@ struct NewDataSheet: View {
                     Text("Cancel")
                 },
                 trailing: Button(action: {
-                    let newReminder = MaskReminder(context: self.managedObjectContext)
-                    
-                    newReminder.label = self.label
-                    newReminder.isActive = true
-                    newReminder.time = self.time
-                    newReminder.daysOfWeek = self.daysOfWeek
-                    
                     do {
                         try self.managedObjectContext.save()
                     } catch {
                         print(error.localizedDescription)
                     }
-                    
+
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Done")
                 }
             )
         }
-    }
-}
-
-struct NewData_Previews: PreviewProvider {
-    static var previews: some View {
-        NewDataSheet()
     }
 }
