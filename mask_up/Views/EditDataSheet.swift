@@ -5,6 +5,12 @@ struct EditDataSheet: View {
     @Environment(\.managedObjectContext) var managedObjectContext
   
     @State var maskReminder: MaskReminder
+    @State var selectedDays: [Int]
+    
+    init(maskReminder: MaskReminder) {
+        self._maskReminder = State.init(initialValue: maskReminder)
+        self._selectedDays = State.init(initialValue: maskReminder.daysOfWeek)
+    }
     
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
@@ -25,7 +31,7 @@ struct EditDataSheet: View {
                 }
                 
                 Section(header: Text("Repeat Days")) {
-                    MultipleSelectionList(selections: $maskReminder.daysOfWeek)
+                    MultipleSelectionList(selections: $selectedDays)
                 }
             }
             .navigationBarTitle("New Reminder", displayMode: .inline)
@@ -37,11 +43,13 @@ struct EditDataSheet: View {
                 },
                 trailing: Button(action: {
                     do {
+                        self.maskReminder.daysOfWeek = self.selectedDays
+                        
                         try self.managedObjectContext.save()
                     } catch {
                         print(error.localizedDescription)
                     }
-
+                    
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Done")

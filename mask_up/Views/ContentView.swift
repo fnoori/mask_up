@@ -8,6 +8,7 @@ struct ContentView: View {
     var maskReminders: FetchedResults<MaskReminder>
     
     @State var showNewEntryModal: Bool = false
+    @State var showEditEntryModal: Bool = false
     @State var isEditMode: EditMode = .inactive
     @State var selectedMaskReminder: MaskReminder?
     
@@ -38,7 +39,7 @@ struct ContentView: View {
                                 .onTapGesture {
                                     if self.isEditMode == .active {
                                         self.selectedMaskReminder = maskReminder
-                                        self.showNewEntryModal = true
+                                        self.showEditEntryModal.toggle()
                                     }
                             }
                         }
@@ -46,22 +47,21 @@ struct ContentView: View {
                     }
                 }        
             }
-            .navigationBarTitle("Mask Up")
+            .navigationBarTitle("Mask Up", displayMode: .inline)
             .navigationBarItems(
                 leading: EditButton(),
                 trailing: Button(action: {
-                    self.showNewEntryModal = true
+                    self.showNewEntryModal.toggle()
                 }) {
                     Image(systemName: "plus")
-                }.sheet(isPresented: $showNewEntryModal) {
-                    if self.selectedMaskReminder != nil {
-                        EditDataSheet(maskReminder: self.selectedMaskReminder!)
-                            .environment(\.managedObjectContext, self.managedObjectContext)
-                    } else {
-                        NewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
-                    }
+                }
+                .sheet(isPresented: $showNewEntryModal) {
+                    NewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
                 }
             )
+            .sheet(isPresented: $showEditEntryModal) {
+                EditDataSheet(maskReminder: self.selectedMaskReminder!).environment(\.managedObjectContext, self.managedObjectContext)
+            }
             .environment(\.editMode, self.$isEditMode)
         }
     }

@@ -4,7 +4,6 @@ struct NewDataSheet: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @State private var id: UUID = UUID()
     @State private var label: String = ""
     @State private var time: Date = Date()
     @State private var daysOfWeek: [Int] = []
@@ -42,6 +41,7 @@ struct NewDataSheet: View {
                 trailing: Button(action: {
                     let newReminder = MaskReminder(context: self.managedObjectContext)
                     
+                    newReminder.id = UUID()
                     newReminder.label = self.label
                     newReminder.isActive = true
                     newReminder.time = self.time
