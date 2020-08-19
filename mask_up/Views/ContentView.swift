@@ -12,6 +12,8 @@ struct ContentView: View {
     @State var isEditMode: EditMode = .inactive
     @State var selectedMaskReminder: MaskReminder?
     
+    let coreDataUtility = CoreDataUtility()
+    
     func timeFromDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
@@ -21,9 +23,25 @@ struct ContentView: View {
     func delete(at indexSet: IndexSet) {
         for index in indexSet {
             do {
+                let maskReminder = self.maskReminders[index]
+                
                 self.managedObjectContext.delete(self.maskReminders[index])
+                coreDataUtility.deleteData(id: maskReminder.id)
+                
                 try self.managedObjectContext.save()
             } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    init() {
+        UNUserNotificationCenter.current()
+        .requestAuthorization(options:
+        [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set !")
+            } else if let error = error {
                 print(error.localizedDescription)
             }
         }

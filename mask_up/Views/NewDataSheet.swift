@@ -45,10 +45,34 @@ struct NewDataSheet: View {
                     newReminder.label = self.label
                     newReminder.isActive = true
                     newReminder.time = self.time
-                    newReminder.daysOfWeek = self.daysOfWeek
+                    newReminder.daysOfWeek = self.daysOfWeek.indices.map { $0 + 1 }
                     
                     do {
                         try self.managedObjectContext.save()
+                        
+                        for weekday in self.daysOfWeek {
+                            let content = UNMutableNotificationContent()
+                            content.title = "Don't forget your mask"
+                            content.subtitle = self.label
+                            content.sound = UNNotificationSound.default
+
+                            var dateComponents = DateComponents()
+                            dateComponents.calendar = Calendar.current
+                            
+                            dateComponents.weekday = self.parseWeekday(weekday: weekday)
+                            dateComponents.hour = self.parseHour(date: self.time)
+                            dateComponents.minute = self.parseMinute(date: self.time)
+
+                            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                            let request = UNNotificationRequest(identifier: newReminder.id.uuidString, content: content, trigger: trigger)
+
+                            let notificationCenter = UNUserNotificationCenter.current()
+                            notificationCenter.add(request) { (error) in
+                               if error != nil {
+                                  // Handle any errors.
+                               }
+                            }
+                        }
                     } catch {
                         print(error.localizedDescription)
                     }
@@ -59,6 +83,18 @@ struct NewDataSheet: View {
                 }
             )
         }
+    }
+    
+    func parseWeekday(weekday: Int) -> Int {
+        return weekday + 2
+    }
+    
+    func parseHour(date: Date) -> Int {
+        return Calendar.current.component(.hour, from: date)
+    }
+    
+    func parseMinute(date: Date) -> Int {
+        return Calendar.current.component(.minute, from: date)
     }
 }
 

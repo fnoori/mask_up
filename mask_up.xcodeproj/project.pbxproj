@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA2721D424EA0CAD00CF1D40 /* mask_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA2721D224EA0CAD00CF1D40 /* mask_up.xcdatamodeld */; };
-		EA2721D724EA0CFD00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721D524EA0CFD00CF1D40 /* MaskReminder+CoreDataClass.swift */; };
-		EA2721D824EA0CFD00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721D624EA0CFD00CF1D40 /* MaskReminder+CoreDataProperties.swift */; };
 		EA2721DA24EA10E900CF1D40 /* EditDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721D924EA10E900CF1D40 /* EditDataSheet.swift */; };
+		EA2721DD24ECBBA000CF1D40 /* CoreDataUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */; };
+		EA2721E724ECC49600CF1D40 /* mask_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA2721E524ECC49600CF1D40 /* mask_up.xcdatamodeld */; };
+		EA2721EA24ECC4DC00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721E824ECC4DC00CF1D40 /* MaskReminder+CoreDataClass.swift */; };
+		EA2721EB24ECC4DC00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721E924ECC4DC00CF1D40 /* MaskReminder+CoreDataProperties.swift */; };
 		EAC7CEB024E3849700ECBAB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */; };
 		EAC7CEB224E3849700ECBAB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEB124E3849700ECBAB5 /* SceneDelegate.swift */; };
 		EAC7CEB624E3849800ECBAB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC7CEB524E3849800ECBAB5 /* Assets.xcassets */; };
@@ -25,10 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EA2721D324EA0CAD00CF1D40 /* mask_up.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mask_up.xcdatamodel; sourceTree = "<group>"; };
-		EA2721D524EA0CFD00CF1D40 /* MaskReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EA2721D624EA0CFD00CF1D40 /* MaskReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA2721D924EA10E900CF1D40 /* EditDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataSheet.swift; sourceTree = "<group>"; };
+		EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtility.swift; sourceTree = "<group>"; };
+		EA2721E624ECC49600CF1D40 /* mask_up.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mask_up.xcdatamodel; sourceTree = "<group>"; };
+		EA2721E824ECC4DC00CF1D40 /* MaskReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA2721E924ECC4DC00CF1D40 /* MaskReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EAC7CEAC24E3849700ECBAB5 /* mask_up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mask_up.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAC7CEB124E3849700ECBAB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA2721DB24ECBB8F00CF1D40 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		EAC7CEA324E3849700ECBAB5 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		EAC7CEAE24E3849700ECBAB5 /* mask_up */ = {
 			isa = PBXGroup;
 			children = (
+				EA2721DB24ECBB8F00CF1D40 /* Utilities */,
 				EAF6C7B924E9F9B100998955 /* Components */,
 				EAC7CF1C24E39A4600ECBAB5 /* Views */,
 				EAC7CEFB24E3920C00ECBAB5 /* Models */,
@@ -84,7 +95,7 @@
 				EAC7CEBD24E3849800ECBAB5 /* Info.plist */,
 				EAC7CEB724E3849800ECBAB5 /* Preview Content */,
 				EAF6C7BC24EA02C200998955 /* tmp.txt */,
-				EA2721D224EA0CAD00CF1D40 /* mask_up.xcdatamodeld */,
+				EA2721E524ECC49600CF1D40 /* mask_up.xcdatamodeld */,
 			);
 			path = mask_up;
 			sourceTree = "<group>";
@@ -100,8 +111,8 @@
 		EAC7CEFB24E3920C00ECBAB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA2721D524EA0CFD00CF1D40 /* MaskReminder+CoreDataClass.swift */,
-				EA2721D624EA0CFD00CF1D40 /* MaskReminder+CoreDataProperties.swift */,
+				EA2721E824ECC4DC00CF1D40 /* MaskReminder+CoreDataClass.swift */,
+				EA2721E924ECC4DC00CF1D40 /* MaskReminder+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,16 +210,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC7CEB024E3849700ECBAB5 /* AppDelegate.swift in Sources */,
-				EA2721D824EA0CFD00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */,
-				EA2721D724EA0CFD00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */,
 				EAF6C79C24E3A25B00998955 /* MultipleSelectionRow.swift in Sources */,
 				EA2721DA24EA10E900CF1D40 /* EditDataSheet.swift in Sources */,
 				EAC7CF1F24E39A8A00ECBAB5 /* ContentView.swift in Sources */,
 				EAC7CEB224E3849700ECBAB5 /* SceneDelegate.swift in Sources */,
-				EA2721D424EA0CAD00CF1D40 /* mask_up.xcdatamodeld in Sources */,
 				EAF6C79E24E3A3C400998955 /* MultipleSelectionList.swift in Sources */,
 				EAF6C7BB24E9F9C000998955 /* MaskReminderRow.swift in Sources */,
 				EAC7CF2024E39A8C00ECBAB5 /* NewDataSheet.swift in Sources */,
+				EA2721EA24ECC4DC00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */,
+				EA2721EB24ECC4DC00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */,
+				EA2721E724ECC49600CF1D40 /* mask_up.xcdatamodeld in Sources */,
+				EA2721DD24ECBBA000CF1D40 /* CoreDataUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,12 +416,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EA2721D224EA0CAD00CF1D40 /* mask_up.xcdatamodeld */ = {
+		EA2721E524ECC49600CF1D40 /* mask_up.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EA2721D324EA0CAD00CF1D40 /* mask_up.xcdatamodel */,
+				EA2721E624ECC49600CF1D40 /* mask_up.xcdatamodel */,
 			);
-			currentVersion = EA2721D324EA0CAD00CF1D40 /* mask_up.xcdatamodel */;
+			currentVersion = EA2721E624ECC49600CF1D40 /* mask_up.xcdatamodel */;
 			path = mask_up.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
