@@ -7,6 +7,8 @@ struct EditDataSheet: View {
     @State var maskReminder: MaskReminder
     @State var selectedDays: [Int]
     
+    @State var timeIs: Date = Date()
+    
     init(maskReminder: MaskReminder) {
         self._maskReminder = State.init(initialValue: maskReminder)
         self._selectedDays = State.init(initialValue: maskReminder.daysOfWeek)
@@ -23,7 +25,7 @@ struct EditDataSheet: View {
             Form {
                 Section(header: Text("General")) {
                     DatePicker(
-                        selection: $maskReminder.time,
+                        selection: $maskReminder.time ?? Date(),
                         displayedComponents: .hourAndMinute,
                         label: { Text("Reminder Time") }
                     )
@@ -43,7 +45,7 @@ struct EditDataSheet: View {
                 },
                 trailing: Button(action: {
                     do {
-                        self.maskReminder.daysOfWeek = self.selectedDays
+                        
                         
                         try self.managedObjectContext.save()
                     } catch {
@@ -57,4 +59,13 @@ struct EditDataSheet: View {
             )
         }
     }
+}
+
+// MARK: Operator Overloads
+
+func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
+    Binding(
+        get: { lhs.wrappedValue ?? rhs },
+        set: { lhs.wrappedValue = $0 }
+    )
 }

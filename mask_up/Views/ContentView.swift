@@ -4,7 +4,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @FetchRequest(entity: MaskReminder.entity(), sortDescriptors: [])
-    
+
     var maskReminders: FetchedResults<MaskReminder>
     
     @State var showNewEntryModal: Bool = false
@@ -22,16 +22,8 @@ struct ContentView: View {
     
     func delete(at indexSet: IndexSet) {
         for index in indexSet {
-            do {
-                let maskReminder = self.maskReminders[index]
-                
-                self.managedObjectContext.delete(self.maskReminders[index])
-                coreDataUtility.deleteData(id: maskReminder.id)
-                
-                try self.managedObjectContext.save()
-            } catch {
-                print(error.localizedDescription)
-            }
+            let maskReminder = self.maskReminders[index]
+            coreDataUtility.deleteData(id: maskReminder.id!)
         }
     }
     
@@ -78,7 +70,9 @@ struct ContentView: View {
                 }
             )
             .sheet(isPresented: $showEditEntryModal) {
-                EditDataSheet(maskReminder: self.selectedMaskReminder!).environment(\.managedObjectContext, self.managedObjectContext)
+                if self.selectedMaskReminder != nil {
+                    EditDataSheet(maskReminder: self.selectedMaskReminder!).environment(\.managedObjectContext, self.managedObjectContext)
+                }
             }
             .environment(\.editMode, self.$isEditMode)
         }

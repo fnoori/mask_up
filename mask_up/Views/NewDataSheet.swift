@@ -64,7 +64,7 @@ struct NewDataSheet: View {
                             dateComponents.minute = self.parseMinute(date: self.time)
 
                             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                            let request = UNNotificationRequest(identifier: newReminder.id.uuidString, content: content, trigger: trigger)
+                            let request = UNNotificationRequest(identifier: newReminder.id!.uuidString, content: content, trigger: trigger)
 
                             let notificationCenter = UNUserNotificationCenter.current()
                             notificationCenter.add(request) { (error) in

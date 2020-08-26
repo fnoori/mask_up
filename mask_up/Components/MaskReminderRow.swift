@@ -3,10 +3,14 @@ import SwiftUI
 struct MaskReminderRow: View {
     @ObservedObject var maskReminder: MaskReminder
     
-    func timeFromDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter.string(from: date)
+    func timeFromDate(date: Date?) -> String {
+        if let dateToConvert = date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "h:mm a"
+            return dateFormatter.string(from: dateToConvert)
+        } else {
+            return ""
+        }
     }
     
     func displayDaysOfWeek(daysOfWeek: [Int]) -> String {
@@ -36,8 +40,7 @@ struct MaskReminderRow: View {
                     Text(self.displayDaysOfWeek(daysOfWeek: self.maskReminder.daysOfWeek))
                         .font(.subheadline)
                     Spacer()
-                }
-                
+                }                
             }
         }.frame(height: 60)
     }

@@ -8,6 +8,6 @@
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="MaskReminder" positionX="-45" positionY="0" width="128" height="118"/>
+        <element name="MaskReminder" positionX="-36" positionY="9" width="128" height="118"/>
     </elements>
 </model>
