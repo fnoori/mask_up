@@ -44,9 +44,12 @@ class CoreDataUtility {
         
         do {
             let maskReminder = try managedContext.fetch(fetchRequest)
+            let maskReminderObject = maskReminder[0] as! MaskReminder
             
             let reminderToDelete = maskReminder[0] as! NSManagedObject
             managedContext.delete(reminderToDelete)
+            
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [maskReminderObject.id!.uuidString])
             
             try managedContext.save()
         } catch {
