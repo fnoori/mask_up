@@ -1,8 +1,9 @@
 import SwiftUI
+import CoreLocation
+import UserNotifications
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
-    
     @FetchRequest(entity: MaskReminder.entity(), sortDescriptors: [])
 
     var maskReminders: FetchedResults<MaskReminder>
@@ -13,6 +14,8 @@ struct ContentView: View {
     @State var selectedMaskReminder: MaskReminder?
     
     let coreDataUtility = CoreDataUtility()
+    
+    let locationManager = CLLocationManager()
     
     func timeFromDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -29,13 +32,23 @@ struct ContentView: View {
     
     init() {
         UNUserNotificationCenter.current()
-        .requestAuthorization(options:
-        [.alert, .badge, .sound]) { success, error in
+        .requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
                 print("All set !")
             } else if let error = error {
                 print(error.localizedDescription)
             }
+        }
+                
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
+            self.locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted, .denied:
+            print("need location to use location based notification")
+            break
+        default:
+            print("need location for location based notificaion")
         }
     }
     

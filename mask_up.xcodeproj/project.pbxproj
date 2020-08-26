@@ -12,6 +12,7 @@
 		EA2721EE24F5EC3000CF1D40 /* mask_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA2721EC24F5EC3000CF1D40 /* mask_up.xcdatamodeld */; };
 		EA2721F124F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721EF24F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift */; };
 		EA2721F224F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721F024F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift */; };
+		EA2721F424F6080300CF1D40 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */; };
 		EAC7CEB024E3849700ECBAB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */; };
 		EAC7CEB224E3849700ECBAB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEB124E3849700ECBAB5 /* SceneDelegate.swift */; };
 		EAC7CEB624E3849800ECBAB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC7CEB524E3849800ECBAB5 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		EA2721ED24F5EC3000CF1D40 /* mask_up.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mask_up.xcdatamodel; sourceTree = "<group>"; };
 		EA2721EF24F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA2721F024F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
 		EAC7CEAC24E3849700ECBAB5 /* mask_up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mask_up.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAC7CEB124E3849700ECBAB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */,
+				EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				EA2721F124F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */,
 				EA2721F224F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */,
 				EA2721EE24F5EC3000CF1D40 /* mask_up.xcdatamodeld in Sources */,
+				EA2721F424F6080300CF1D40 /* LocationNotificationScheduler.swift in Sources */,
 				EA2721DD24ECBBA000CF1D40 /* CoreDataUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,27 +9,56 @@ struct NewDataSheet: View {
     @State private var daysOfWeek: [Int] = []
     @State private var isActive: Bool = false
     
+    private var newReminderType = ["Simple", "Location Based"]
+    @State private var chosenReminderType = 0
+    
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
         let max = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         return min...max
     }
     
+    
+//    @State var mapChoioce = 0
+//    var settings = ["Map", "Transit", "Satellite"]
+//    Picker("Options", selection: $mapChoioce) {
+//        ForEach(0 ..< settings.count) { index in
+//            Text(self.settings[index])
+//                .tag(index)
+//        }
+//
+//    }.pickerStyle(SegmentedPickerStyle())
+    
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("General")) {
-                    DatePicker(
-                        selection: $time,
-                        displayedComponents: .hourAndMinute,
-                        label: { Text("Reminder Time") }
-                    )
-                    TextField("Label", text: $label)
+                Section {
+                    Picker("Options", selection: $chosenReminderType) {
+                        ForEach(0 ..< newReminderType.count) { index in
+                            Text(self.newReminderType[index]).tag(index)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Section(header: Text("Repeat Days")) {
-                    MultipleSelectionList(selections: $daysOfWeek)
+                if self.chosenReminderType == 0 {
+                    // TODO: plain notification
+                    Section(header: Text("General")) {
+                        DatePicker(
+                            selection: $time,
+                            displayedComponents: .hourAndMinute,
+                            label: { Text("Reminder Time") }
+                        )
+                        TextField("Label", text: $label)
+                    }
+                    
+                    Section(header: Text("Repeat Days")) {
+                        MultipleSelectionList(selections: $daysOfWeek)
+                    }
+                } else {
+                    // TODO: location based
                 }
+                
+               
             }
             .navigationBarTitle("New Reminder", displayMode: .inline)
             .navigationBarItems(
