@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA25C4932506B51A0046441A /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25C4922506B51A0046441A /* LocationView.swift */; };
+		EA25C4982506B6430046441A /* mask_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA25C4962506B6430046441A /* mask_up.xcdatamodeld */; };
+		EA25C49F2506B7560046441A /* MaskReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25C49D2506B7560046441A /* MaskReminder+CoreDataClass.swift */; };
+		EA25C4A02506B7560046441A /* MaskReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25C49E2506B7560046441A /* MaskReminder+CoreDataProperties.swift */; };
 		EA2721DA24EA10E900CF1D40 /* EditDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721D924EA10E900CF1D40 /* EditDataSheet.swift */; };
 		EA2721DD24ECBBA000CF1D40 /* CoreDataUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */; };
-		EA2721EE24F5EC3000CF1D40 /* mask_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA2721EC24F5EC3000CF1D40 /* mask_up.xcdatamodeld */; };
-		EA2721F124F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721EF24F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift */; };
-		EA2721F224F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721F024F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift */; };
 		EA2721F424F6080300CF1D40 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */; };
 		EAC7CEB024E3849700ECBAB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */; };
 		EAC7CEB224E3849700ECBAB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEB124E3849700ECBAB5 /* SceneDelegate.swift */; };
@@ -27,11 +28,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA25C4922506B51A0046441A /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		EA25C4972506B6430046441A /* mask_up.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mask_up.xcdatamodel; sourceTree = "<group>"; };
+		EA25C49D2506B7560046441A /* MaskReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA25C49E2506B7560046441A /* MaskReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA2721D924EA10E900CF1D40 /* EditDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataSheet.swift; sourceTree = "<group>"; };
 		EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtility.swift; sourceTree = "<group>"; };
-		EA2721ED24F5EC3000CF1D40 /* mask_up.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mask_up.xcdatamodel; sourceTree = "<group>"; };
-		EA2721EF24F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EA2721F024F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
 		EAC7CEAC24E3849700ECBAB5 /* mask_up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mask_up.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,7 +100,7 @@
 				EAC7CEBD24E3849800ECBAB5 /* Info.plist */,
 				EAC7CEB724E3849800ECBAB5 /* Preview Content */,
 				EAF6C7BC24EA02C200998955 /* tmp.txt */,
-				EA2721EC24F5EC3000CF1D40 /* mask_up.xcdatamodeld */,
+				EA25C4962506B6430046441A /* mask_up.xcdatamodeld */,
 			);
 			path = mask_up;
 			sourceTree = "<group>";
@@ -114,8 +116,8 @@
 		EAC7CEFB24E3920C00ECBAB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA2721EF24F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift */,
-				EA2721F024F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift */,
+				EA25C49D2506B7560046441A /* MaskReminder+CoreDataClass.swift */,
+				EA25C49E2506B7560046441A /* MaskReminder+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,6 +130,7 @@
 				EAF6C79B24E3A25B00998955 /* MultipleSelectionRow.swift */,
 				EAF6C79D24E3A3C400998955 /* MultipleSelectionList.swift */,
 				EA2721D924EA10E900CF1D40 /* EditDataSheet.swift */,
+				EA25C4922506B51A0046441A /* LocationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA25C4982506B6430046441A /* mask_up.xcdatamodeld in Sources */,
 				EAC7CEB024E3849700ECBAB5 /* AppDelegate.swift in Sources */,
 				EAF6C79C24E3A25B00998955 /* MultipleSelectionRow.swift in Sources */,
 				EA2721DA24EA10E900CF1D40 /* EditDataSheet.swift in Sources */,
@@ -219,10 +223,10 @@
 				EAC7CEB224E3849700ECBAB5 /* SceneDelegate.swift in Sources */,
 				EAF6C79E24E3A3C400998955 /* MultipleSelectionList.swift in Sources */,
 				EAF6C7BB24E9F9C000998955 /* MaskReminderRow.swift in Sources */,
+				EA25C4932506B51A0046441A /* LocationView.swift in Sources */,
+				EA25C49F2506B7560046441A /* MaskReminder+CoreDataClass.swift in Sources */,
 				EAC7CF2024E39A8C00ECBAB5 /* NewDataSheet.swift in Sources */,
-				EA2721F124F5ECEA00CF1D40 /* MaskReminder+CoreDataClass.swift in Sources */,
-				EA2721F224F5ECEA00CF1D40 /* MaskReminder+CoreDataProperties.swift in Sources */,
-				EA2721EE24F5EC3000CF1D40 /* mask_up.xcdatamodeld in Sources */,
+				EA25C4A02506B7560046441A /* MaskReminder+CoreDataProperties.swift in Sources */,
 				EA2721F424F6080300CF1D40 /* LocationNotificationScheduler.swift in Sources */,
 				EA2721DD24ECBBA000CF1D40 /* CoreDataUtility.swift in Sources */,
 			);
@@ -420,12 +424,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EA2721EC24F5EC3000CF1D40 /* mask_up.xcdatamodeld */ = {
+		EA25C4962506B6430046441A /* mask_up.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EA2721ED24F5EC3000CF1D40 /* mask_up.xcdatamodel */,
+				EA25C4972506B6430046441A /* mask_up.xcdatamodel */,
 			);
-			currentVersion = EA2721ED24F5EC3000CF1D40 /* mask_up.xcdatamodel */;
+			currentVersion = EA25C4972506B6430046441A /* mask_up.xcdatamodel */;
 			path = mask_up.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

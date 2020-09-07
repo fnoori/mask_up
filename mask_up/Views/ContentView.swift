@@ -40,16 +40,37 @@ struct ContentView: View {
             }
         }
                 
+//        switch CLLocationManager.authorizationStatus() {
+//        case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
+//            self.locationManager.requestWhenInUseAuthorization()
+//            break
+//        case .restricted, .denied:
+//            print("need location to use location based notification")
+//            break
+//        default:
+//            print("need location for location based notificaion")
+//        }
+        
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
             self.locationManager.requestWhenInUseAuthorization()
-            break
         case .restricted, .denied:
             print("need location to use location based notification")
             break
         default:
             print("need location for location based notificaion")
         }
+        
+        
+        let center = UNUserNotificationCenter.current()
+        center.getPendingNotificationRequests(completionHandler: { requests in
+            for request in requests {
+                print("\n\n")
+                print(request)
+                print("\n\n")
+            }
+        })
     }
     
     var body: some View {
