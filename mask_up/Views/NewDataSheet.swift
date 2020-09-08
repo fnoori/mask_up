@@ -9,24 +9,18 @@ struct NewDataSheet: View {
     @State private var time: Date = Date()
     @State private var daysOfWeek: [Int] = []
     @State private var isActive: Bool = false
-        
-    @State private var street: String = "7020 4 St NW"
-    @State private var unitNumber: String = ""
-    @State private var city: String = "Calgary"
-    @State private var provinceState: String = "AB"
-    @State private var country: String = "Canada"
-    @State private var postCode: String = "T2K 1C4"
+    
+    @State private var address: String = ""
     
     @State private var autoLocate: Bool = false
     @State private var lat: Double = 0.0
     @State private var long: Double = 0.0
-    @State private var radius: Int = 100
+    @State private var radius: Int = 0
+    
+    let geoCoder = CLGeocoder()
     
     private var newReminderType = ["Simple", "Location Based"]
     @State private var chosenReminderType = 0
-    
-    let myLat = 51.043000
-    let myLong = -114.039310
     
     var dateClosedRange: ClosedRange<Date> {
         let min = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
@@ -47,6 +41,12 @@ struct NewDataSheet: View {
                 
                 TextField("Label", text: $label)
                 
+                Section(header: Text("Radius Limit"), footer: Text("How far do you want to walk away from the specified location before you receive a notification.")) {
+                    
+                    Stepper("Metres \(self.radius)", value: $radius, in: 0...50, step: 5)
+                    
+                }
+                
                 if self.chosenReminderType == 0 {
                     Section(header: Text("General")) {
                         DatePicker(
@@ -60,30 +60,35 @@ struct NewDataSheet: View {
                         MultipleSelectionList(selections: $daysOfWeek)
                     }
                 } else {
-                    Toggle(isOn: $autoLocate) {
-                        Text("Locate Me Automatically")
+                    Section(header: Text(""), footer: Text("Uses your current location to set the location reminder's centre.")) {
+                        Toggle(isOn: $autoLocate) {
+                            Text("Locate Me Automatically")
+                        }.onReceive([self.autoLocate].publisher.first()) { (value) in
+                            if value == true {
+                                self.getCurrentLocation()
+                            } else {
+                                self.lat = 0.0
+                                self.long = 0.0
+                            }
+                        }
                     }
                     
                     if !self.autoLocate {
-                        Section(header: Text("Manual Address Input")) {
-                            TextField("Street", text: $street)
-                            TextField("Unit Number", text: $unitNumber)
+                        Section(header: Text(""), footer: Text("Manually input your address.")) {
+                            TextField("Address", text: $address, onCommit: {
+                                let geoCoder = CLGeocoder()
+                                geoCoder.geocodeAddressString(self.address) { (placemarks, error) in
+                                    guard let placemarks = placemarks, let location = placemarks.first?.location else { return }
+                                    
+                                    self.lat = location.coordinate.latitude
+                                    self.long = location.coordinate.longitude
+                                }
+                            }).keyboardType(.webSearch)
                         }
-                        
-                        Section {
-                            TextField("City", text: $city)
-                            TextField("Provice/State", text: $provinceState)
-                            TextField("Country", text: $country)
-                        }
-                        
-                        Section {
-                            TextField("Postal Code", text: $postCode)
-                        }
-                    } else {
-                        Text("LOCATE ME !")
                     }
                 }
             }
+            .keyboardResponsive()
             .navigationBarTitle("New Reminder", displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
@@ -134,17 +139,8 @@ struct NewDataSheet: View {
                     } else {
                         if self.autoLocate {
                             if CLLocationManager.locationServicesEnabled() {
-                                let locationManager = CLLocationManager()
-                                locationManager.distanceFilter = kCLDistanceFilterNone
-                                locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                                
-                                locationManager.startUpdatingLocation()
-                                
-                                self.lat = locationManager.location!.coordinate.latitude
-                                self.long = locationManager.location!.coordinate.longitude
-                                
                                 let centre = CLLocationCoordinate2D(latitude: self.lat, longitude: self.long)
-                                let region = CLCircularRegion(center: centre, radius: CLLocationDistance(self.radius), identifier: self.label)
+                                let region = CLCircularRegion(center: centre, radius: CLLocationDistance(self.radius), identifier: newReminder.id!.uuidString)
                                 
                                 region.notifyOnExit = true
                                 region.notifyOnEntry = false
@@ -163,61 +159,68 @@ struct NewDataSheet: View {
                                 print("Please enable location permission")
                             }
                         } else {
-                            var fullAddress = ""
-                            if self.unitNumber != "" {
-                                fullAddress += "\(self.unitNumber) - "
+                            let center = CLLocationCoordinate2D(latitude: self.lat, longitude: self.long)
+                            let region = CLCircularRegion(center: center, radius: CLLocationDistance(self.radius), identifier: newReminder.id!.uuidString)
+                            region.notifyOnExit = true
+                            region.notifyOnEntry = false
+                            let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+                            
+                            let request = UNNotificationRequest(identifier: newReminder.id!.uuidString, content: content, trigger: trigger)
+                            
+                            let notificationCenter = UNUserNotificationCenter.current()
+                            notificationCenter.add(request) { (error) in
+                                if error != nil {
+                                    // Handle any errors.
+                                }
                             }
-                            
-                            fullAddress += "\(self.street), \(self.city) \(self.provinceState) \(self.country), \(self.postCode)"
-                            
-                            self.getCoordinates(fullAddress) { (location) in
-                                print(location)
-                            }
-                            
-//                            var geocoder = CLGeocoder()
-                            
-//                            DispatchQueue.main.async {
-//                                geocoder.geocodeAddressString(fullAddress) {
-//                                    placemarks, error in
-//                                    let placemark = placemarks?.first
-//                                    let lat = placemark?.location?.coordinate.latitude
-//                                    let lon = placemark?.location?.coordinate.longitude
-//                                    print("Lat: \(lat), Lon: \(lon)")
-//                                }
-//                            }
-                            
-//                            let center = CLLocationCoordinate2D(latitude: self.myLat, longitude: self.myLong)
-//                            let region = CLCircularRegion(center: center, radius: 2000, identifier: "Headquarters")
-//                            region.notifyOnExit = true
-//                            region.notifyOnEntry = false
-//                            let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
-//
-//                            let request = UNNotificationRequest(identifier: newReminder.id!.uuidString, content: content, trigger: trigger)
-//
-//                            let notificationCenter = UNUserNotificationCenter.current()
-//                            notificationCenter.add(request) { (error) in
-//                                if error != nil {
-//                                    // Handle any errors.
-//                                }
-//                            }
                         }
                     }
                     
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Done")
-                }
+                }.disabled(!self.canPressDone())
             )
         }
     }
     
-    func getCoordinates(_ address: String,completion:@escaping((CLLocationCoordinate2D) -> ())){
+    func canPressDone() -> Bool {
+        return
+            self.chosenReminderType == 1 && (self.autoLocate == false && (self.lat != 0.0 && self.long != 0.0))
+            || self.chosenReminderType == 0
+            || self.chosenReminderType == 1 && (self.autoLocate == true && (self.lat != 0.0 && self.long != 0.0))
+    }
+    
+    func searchForAddress() {
+        self.getCoordinates(self.address) { (location) in
+            print("\nDone\n")
+        }
+    }
+    
+    func getCoordinates(_ address: String, completion:@escaping((CLLocation) -> ())){
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
             guard let placemarks = placemarks, let location = placemarks.first?.location else { return }
-
-            completion(location.coordinate)
+            
+            self.lat = location.coordinate.latitude
+            self.long = location.coordinate.longitude
+            
+            completion(location)
         }
+    }
+    
+    func getCurrentLocation() {
+        let locationManager = CLLocationManager()
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locationManager.startUpdatingLocation()
+        
+        self.lat = locationManager.location!.coordinate.latitude
+        self.long = locationManager.location!.coordinate.longitude
+        
+        print("\nlat: \(self.lat)")
+        print("long: \(self.long)\n")
     }
     
     func parseWeekday(weekday: Int) -> Int {

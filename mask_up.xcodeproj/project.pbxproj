@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		EA25C4932506B51A0046441A /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25C4922506B51A0046441A /* LocationView.swift */; };
-		EA25C4982506B6430046441A /* mask_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA25C4962506B6430046441A /* mask_up.xcdatamodeld */; };
-		EA25C49F2506B7560046441A /* MaskReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25C49D2506B7560046441A /* MaskReminder+CoreDataClass.swift */; };
-		EA25C4A02506B7560046441A /* MaskReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25C49E2506B7560046441A /* MaskReminder+CoreDataProperties.swift */; };
 		EA2721DA24EA10E900CF1D40 /* EditDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721D924EA10E900CF1D40 /* EditDataSheet.swift */; };
 		EA2721DD24ECBBA000CF1D40 /* CoreDataUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */; };
 		EA2721F424F6080300CF1D40 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */; };
+		EAADCD5925072B6100EBA068 /* mask_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAADCD5725072B6100EBA068 /* mask_up.xcdatamodeld */; };
+		EAADCD5C25072BBB00EBA068 /* MaskReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAADCD5A25072BBB00EBA068 /* MaskReminder+CoreDataClass.swift */; };
+		EAADCD5D25072BBB00EBA068 /* MaskReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAADCD5B25072BBB00EBA068 /* MaskReminder+CoreDataProperties.swift */; };
+		EAADCD66250732E900EBA068 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAADCD65250732E900EBA068 /* KeyboardResponsiveModifier.swift */; };
 		EAC7CEB024E3849700ECBAB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */; };
 		EAC7CEB224E3849700ECBAB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7CEB124E3849700ECBAB5 /* SceneDelegate.swift */; };
 		EAC7CEB624E3849800ECBAB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC7CEB524E3849800ECBAB5 /* Assets.xcassets */; };
@@ -29,12 +30,13 @@
 
 /* Begin PBXFileReference section */
 		EA25C4922506B51A0046441A /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		EA25C4972506B6430046441A /* mask_up.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mask_up.xcdatamodel; sourceTree = "<group>"; };
-		EA25C49D2506B7560046441A /* MaskReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EA25C49E2506B7560046441A /* MaskReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA2721D924EA10E900CF1D40 /* EditDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataSheet.swift; sourceTree = "<group>"; };
 		EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtility.swift; sourceTree = "<group>"; };
 		EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
+		EAADCD5825072B6100EBA068 /* mask_up.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mask_up.xcdatamodel; sourceTree = "<group>"; };
+		EAADCD5A25072BBB00EBA068 /* MaskReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EAADCD5B25072BBB00EBA068 /* MaskReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EAADCD65250732E900EBA068 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 		EAC7CEAC24E3849700ECBAB5 /* mask_up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mask_up.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC7CEAF24E3849700ECBAB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAC7CEB124E3849700ECBAB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				EA2721DC24ECBBA000CF1D40 /* CoreDataUtility.swift */,
 				EA2721F324F6080300CF1D40 /* LocationNotificationScheduler.swift */,
+				EAADCD65250732E900EBA068 /* KeyboardResponsiveModifier.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -100,7 +103,7 @@
 				EAC7CEBD24E3849800ECBAB5 /* Info.plist */,
 				EAC7CEB724E3849800ECBAB5 /* Preview Content */,
 				EAF6C7BC24EA02C200998955 /* tmp.txt */,
-				EA25C4962506B6430046441A /* mask_up.xcdatamodeld */,
+				EAADCD5725072B6100EBA068 /* mask_up.xcdatamodeld */,
 			);
 			path = mask_up;
 			sourceTree = "<group>";
@@ -116,8 +119,8 @@
 		EAC7CEFB24E3920C00ECBAB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA25C49D2506B7560046441A /* MaskReminder+CoreDataClass.swift */,
-				EA25C49E2506B7560046441A /* MaskReminder+CoreDataProperties.swift */,
+				EAADCD5A25072BBB00EBA068 /* MaskReminder+CoreDataClass.swift */,
+				EAADCD5B25072BBB00EBA068 /* MaskReminder+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA25C4982506B6430046441A /* mask_up.xcdatamodeld in Sources */,
+				EAADCD5925072B6100EBA068 /* mask_up.xcdatamodeld in Sources */,
 				EAC7CEB024E3849700ECBAB5 /* AppDelegate.swift in Sources */,
 				EAF6C79C24E3A25B00998955 /* MultipleSelectionRow.swift in Sources */,
 				EA2721DA24EA10E900CF1D40 /* EditDataSheet.swift in Sources */,
@@ -224,9 +227,10 @@
 				EAF6C79E24E3A3C400998955 /* MultipleSelectionList.swift in Sources */,
 				EAF6C7BB24E9F9C000998955 /* MaskReminderRow.swift in Sources */,
 				EA25C4932506B51A0046441A /* LocationView.swift in Sources */,
-				EA25C49F2506B7560046441A /* MaskReminder+CoreDataClass.swift in Sources */,
+				EAADCD5C25072BBB00EBA068 /* MaskReminder+CoreDataClass.swift in Sources */,
+				EAADCD66250732E900EBA068 /* KeyboardResponsiveModifier.swift in Sources */,
 				EAC7CF2024E39A8C00ECBAB5 /* NewDataSheet.swift in Sources */,
-				EA25C4A02506B7560046441A /* MaskReminder+CoreDataProperties.swift in Sources */,
+				EAADCD5D25072BBB00EBA068 /* MaskReminder+CoreDataProperties.swift in Sources */,
 				EA2721F424F6080300CF1D40 /* LocationNotificationScheduler.swift in Sources */,
 				EA2721DD24ECBBA000CF1D40 /* CoreDataUtility.swift in Sources */,
 			);
@@ -424,12 +428,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EA25C4962506B6430046441A /* mask_up.xcdatamodeld */ = {
+		EAADCD5725072B6100EBA068 /* mask_up.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EA25C4972506B6430046441A /* mask_up.xcdatamodel */,
+				EAADCD5825072B6100EBA068 /* mask_up.xcdatamodel */,
 			);
-			currentVersion = EA25C4972506B6430046441A /* mask_up.xcdatamodel */;
+			currentVersion = EAADCD5825072B6100EBA068 /* mask_up.xcdatamodel */;
 			path = mask_up.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

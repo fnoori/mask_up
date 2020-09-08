@@ -34,22 +34,11 @@ struct ContentView: View {
         UNUserNotificationCenter.current()
         .requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-                print("All set !")
+                print("\n\nAll set !\n\n")
             } else if let error = error {
                 print(error.localizedDescription)
             }
         }
-                
-//        switch CLLocationManager.authorizationStatus() {
-//        case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
-//            self.locationManager.requestWhenInUseAuthorization()
-//            break
-//        case .restricted, .denied:
-//            print("need location to use location based notification")
-//            break
-//        default:
-//            print("need location for location based notificaion")
-//        }
         
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
