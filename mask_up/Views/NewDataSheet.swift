@@ -5,6 +5,8 @@ struct NewDataSheet: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     
+    @State private var maskReminderModel = MaskReminderModel()
+    
     @State private var label: String = ""
     @State private var time: Date = Date()
     @State private var daysOfWeek: [Int] = []
@@ -39,18 +41,18 @@ struct NewDataSheet: View {
                     }.pickerStyle(SegmentedPickerStyle())
                 }
                 
-                TextField("Label", text: $label)
+                TextField("Label", text: $maskReminderModel.label)
                 
-                Section(header: Text("Radius Limit"), footer: Text("How far do you want to walk away from the specified location before you receive a notification.")) {
-                    
-                    Stepper("Metres \(self.radius)", value: $radius, in: 0...50, step: 5)
-                    
+                if self.chosenReminderType == 1 {
+                    Section(header: Text("Radius Limit"), footer: Text("How far do you want to walk away from the specified location before you receive a notification.")) {
+                        Stepper("Metres \(self.maskReminderModel.radius)", value: $maskReminderModel.radius, in: 0...50, step: 5)
+                    }
                 }
                 
                 if self.chosenReminderType == 0 {
                     Section(header: Text("General")) {
                         DatePicker(
-                            selection: $time,
+                            selection: $maskReminderModel.time,
                             displayedComponents: .hourAndMinute,
                             label: { Text("Reminder Time") }
                         )
@@ -67,21 +69,21 @@ struct NewDataSheet: View {
                             if value == true {
                                 self.getCurrentLocation()
                             } else {
-                                self.lat = 0.0
-                                self.long = 0.0
+                                self.maskReminderModel.latitude = 0.0
+                                self.maskReminderModel.longitude = 0.0
                             }
                         }
                     }
                     
                     if !self.autoLocate {
                         Section(header: Text(""), footer: Text("Manually input your address.")) {
-                            TextField("Address", text: $address, onCommit: {
+                            TextField("Address", text: $maskReminderModel.address, onCommit: {
                                 let geoCoder = CLGeocoder()
-                                geoCoder.geocodeAddressString(self.address) { (placemarks, error) in
+                                geoCoder.geocodeAddressString(self.maskReminderModel.address) { (placemarks, error) in
                                     guard let placemarks = placemarks, let location = placemarks.first?.location else { return }
                                     
-                                    self.lat = location.coordinate.latitude
-                                    self.long = location.coordinate.longitude
+                                    self.maskReminderModel.latitude = location.coordinate.latitude
+                                    self.maskReminderModel.longitude = location.coordinate.longitude
                                 }
                             }).keyboardType(.webSearch)
                         }
@@ -100,10 +102,10 @@ struct NewDataSheet: View {
                     let newReminder = MaskReminder(context: self.managedObjectContext)
                     
                     newReminder.id = UUID()
-                    newReminder.label = self.label
+                    newReminder.label = self.maskReminderModel.label
                     newReminder.isActive = true
-                    newReminder.time = self.time
-                    newReminder.daysOfWeek = self.daysOfWeek.indices.map { $0 + 1 }
+                    newReminder.time = self.maskReminderModel.time
+                    newReminder.daysOfWeek = self.daysOfWeek
                     
                     let content = UNMutableNotificationContent()
                     content.title = "Don't forget your mask"
@@ -119,12 +121,12 @@ struct NewDataSheet: View {
                                 dateComponents.calendar = Calendar.current
                                 
                                 dateComponents.weekday = self.parseWeekday(weekday: weekday)
-                                dateComponents.hour = self.parseHour(date: self.time)
-                                dateComponents.minute = self.parseMinute(date: self.time)
+                                dateComponents.hour = self.parseHour(date: newReminder.time!)
+                                dateComponents.minute = self.parseMinute(date: newReminder.time!)
                                 
                                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
                                 
-                                let request = UNNotificationRequest(identifier: newReminder.id!.uuidString, content: content, trigger: trigger)
+                                let request = UNNotificationRequest(identifier: "\(weekday)_\(newReminder.id!.uuidString)", content: content, trigger: trigger)
                                 
                                 let notificationCenter = UNUserNotificationCenter.current()
                                 notificationCenter.add(request) { (error) in
@@ -139,7 +141,7 @@ struct NewDataSheet: View {
                     } else {
                         if self.autoLocate {
                             if CLLocationManager.locationServicesEnabled() {
-                                let centre = CLLocationCoordinate2D(latitude: self.lat, longitude: self.long)
+                                let centre = CLLocationCoordinate2D(latitude: self.maskReminderModel.latitude, longitude: self.maskReminderModel.longitude)
                                 let region = CLCircularRegion(center: centre, radius: CLLocationDistance(self.radius), identifier: newReminder.id!.uuidString)
                                 
                                 region.notifyOnExit = true
@@ -159,7 +161,7 @@ struct NewDataSheet: View {
                                 print("Please enable location permission")
                             }
                         } else {
-                            let center = CLLocationCoordinate2D(latitude: self.lat, longitude: self.long)
+                            let center = CLLocationCoordinate2D(latitude: self.maskReminderModel.latitude, longitude: self.maskReminderModel.longitude)
                             let region = CLCircularRegion(center: center, radius: CLLocationDistance(self.radius), identifier: newReminder.id!.uuidString)
                             region.notifyOnExit = true
                             region.notifyOnEntry = false
@@ -186,27 +188,9 @@ struct NewDataSheet: View {
     
     func canPressDone() -> Bool {
         return
-            self.chosenReminderType == 1 && (self.autoLocate == false && (self.lat != 0.0 && self.long != 0.0))
+            self.chosenReminderType == 1 && (self.autoLocate == false && (self.maskReminderModel.latitude != 0.0 && self.maskReminderModel.longitude != 0.0))
             || self.chosenReminderType == 0
-            || self.chosenReminderType == 1 && (self.autoLocate == true && (self.lat != 0.0 && self.long != 0.0))
-    }
-    
-    func searchForAddress() {
-        self.getCoordinates(self.address) { (location) in
-            print("\nDone\n")
-        }
-    }
-    
-    func getCoordinates(_ address: String, completion:@escaping((CLLocation) -> ())){
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-            guard let placemarks = placemarks, let location = placemarks.first?.location else { return }
-            
-            self.lat = location.coordinate.latitude
-            self.long = location.coordinate.longitude
-            
-            completion(location)
-        }
+            || self.chosenReminderType == 1 && (self.autoLocate == true && (self.maskReminderModel.latitude != 0.0 && self.maskReminderModel.longitude != 0.0))
     }
     
     func getCurrentLocation() {
@@ -215,12 +199,12 @@ struct NewDataSheet: View {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         locationManager.startUpdatingLocation()
-        
-        self.lat = locationManager.location!.coordinate.latitude
-        self.long = locationManager.location!.coordinate.longitude
-        
-        print("\nlat: \(self.lat)")
-        print("long: \(self.long)\n")
+        DispatchQueue.main.async {
+            self.maskReminderModel.latitude = locationManager.location!.coordinate.latitude
+            self.maskReminderModel.longitude = locationManager.location!.coordinate.longitude
+            
+            locationManager.stopUpdatingLocation()
+        }
     }
     
     func parseWeekday(weekday: Int) -> Int {

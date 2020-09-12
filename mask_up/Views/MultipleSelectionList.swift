@@ -3,7 +3,7 @@ import SwiftUI
 struct MultipleSelectionList: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @State var items: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    @State var items: [String] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     @Binding var selections: [Int]
 
     func getIndex(value: String) -> Int {

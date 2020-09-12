@@ -89,7 +89,8 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 .sheet(isPresented: $showNewEntryModal) {
-                    NewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
+//                    NewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
+                    NewNewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
                 }
             )
             .sheet(isPresented: $showEditEntryModal) {

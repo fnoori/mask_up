@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="70544077-2913-4e76-835d-e535c8f10cce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mask_up/Components/AutoLocate.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Components/DaysOfWeekPicker.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Components/ManualAddressEntry.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Components/ReminderTimePicker.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Components/ReminderTypePicker.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Models/MaskReminderModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Utilities/Binding+Extension.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Utilities/LocationFetcher.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Utilities/LocationManager.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Views/NewNewDataSheet.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Models/MaskReminder+CoreDataClass.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Models/MaskReminder+CoreDataClass.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Models/MaskReminder+CoreDataProperties.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Models/MaskReminder+CoreDataProperties.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Views/MultipleSelectionList.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/MultipleSelectionList.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/mask_up.xcdatamodeld/mask_up.xcdatamodel/contents" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/mask_up.xcdatamodeld/mask_up.xcdatamodel/contents" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_1CD7D027-E2AE-4604-B1E5-1A5E8426DB64" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1hIf0IQDsDwgw3OSr2ijG039aDD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="OBJC.PRESERVED_TARGET_SELECTION" value="mask_up" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="Shelf.Project.Settings" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="70544077-2913-4e76-835d-e535c8f10cce" name="Default Changelist" comment="" />
+      <created>1599703308767</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599703308767</updated>
+      <workItem from="1599703311850" duration="7806000" />
+      <workItem from="1599930208019" duration="3787000" />
+      <workItem from="1599934271781" duration="818000" />
+      <workItem from="1599936028757" duration="189000" />
+      <workItem from="1599936680409" duration="1006000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="378" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599930801306">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="378" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.777@0.23.1280.777" timestamp="1599930801306" />
+    <state width="1238" height="198" key="GridCell.Tab.0.bottom" timestamp="1599937794410">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="198" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599937794410" />
+    <state width="1238" height="198" key="GridCell.Tab.0.center" timestamp="1599937794409">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="198" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1599937794409" />
+    <state width="1238" height="198" key="GridCell.Tab.0.left" timestamp="1599937794409">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="198" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1599937794408" />
+    <state width="1238" height="198" key="GridCell.Tab.0.right" timestamp="1599937794410">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="198" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1599937794410" />
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1599935106442">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599935106442" />
+    <state width="1238" height="246" key="GridCell.Tab.1.center" timestamp="1599935106442">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1599935106442" />
+    <state width="1238" height="246" key="GridCell.Tab.1.left" timestamp="1599935106441">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1599935106441" />
+    <state width="1238" height="246" key="GridCell.Tab.1.right" timestamp="1599935106442">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1599935106442" />
+    <state x="141" y="50" key="SettingsEditor" timestamp="1599935049690">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="141" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1599935049690" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1599934814720">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.23.1280.777@0.23.1280.777" timestamp="1599934814720" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1599931001450">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1599931001450" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift</url>
+          <line>103</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="AppleRunConfiguration">
+        <watch expression="self.latitude" language="Swift" />
+        <watch expression="self.longitude" language="Swift" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
