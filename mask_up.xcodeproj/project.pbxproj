@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		363AD3306781E2804A04869C /* AutoLocate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD58843DEF4F0EAE1B019 /* AutoLocate.swift */; };
 		363AD4FD82BEFE690170BEF6 /* ReminderTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD7BA375CD74ACE33ADD8 /* ReminderTimePicker.swift */; };
+		363AD8BE89A6A3C0F5C2152C /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363ADA1CB5B65789A527B072 /* ActivityView.swift */; };
 		363ADB08228105CA0F1409CB /* ManualAddressEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD854D4C21A1D07C26FF5 /* ManualAddressEntry.swift */; };
+		363ADB29237DFB8FABA96B1F /* IsLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363ADAE4EF93E055CD85A344 /* IsLoading.swift */; };
 		363ADB4FC9579AF36B4B95F7 /* NewNewDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD5EB9AE24943CE8F5DBD /* NewNewDataSheet.swift */; };
-		363ADB6D701EA058751A818C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD1C857179623D9B80B9A /* LocationManager.swift */; };
 		363ADCA936D482B37B553B5D /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD97C968D56EEF71F7BBD /* LocationFetcher.swift */; };
 		363ADD558F5241E9B4BC4A30 /* DaysOfWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363ADBD3C7E1EF6E10BDD8E0 /* DaysOfWeekPicker.swift */; };
+		363ADDB8E18E075DB533D02D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363ADA5478F766288548DB5F /* LoadingView.swift */; };
 		363ADE6E418C730776233EA4 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363ADC0A714BD4AE07A1D361 /* Binding+Extension.swift */; };
 		363ADEF933C6F8B2810C12B9 /* ReminderTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD8788835B0BDCB10A66F /* ReminderTypePicker.swift */; };
 		EA25C4932506B51A0046441A /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25C4922506B51A0046441A /* LocationView.swift */; };
@@ -39,13 +41,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		363AD1C857179623D9B80B9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		363AD58843DEF4F0EAE1B019 /* AutoLocate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLocate.swift; sourceTree = "<group>"; };
 		363AD5EB9AE24943CE8F5DBD /* NewNewDataSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNewDataSheet.swift; sourceTree = "<group>"; };
 		363AD7BA375CD74ACE33ADD8 /* ReminderTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTimePicker.swift; sourceTree = "<group>"; };
 		363AD854D4C21A1D07C26FF5 /* ManualAddressEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualAddressEntry.swift; sourceTree = "<group>"; };
 		363AD8788835B0BDCB10A66F /* ReminderTypePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTypePicker.swift; sourceTree = "<group>"; };
 		363AD97C968D56EEF71F7BBD /* LocationFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		363ADA1CB5B65789A527B072 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		363ADA5478F766288548DB5F /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		363ADAE4EF93E055CD85A344 /* IsLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsLoading.swift; sourceTree = "<group>"; };
 		363ADBD3C7E1EF6E10BDD8E0 /* DaysOfWeekPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysOfWeekPicker.swift; sourceTree = "<group>"; };
 		363ADC0A714BD4AE07A1D361 /* Binding+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		EA25C4922506B51A0046441A /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -91,7 +95,7 @@
 				EAADCD65250732E900EBA068 /* KeyboardResponsiveModifier.swift */,
 				363ADC0A714BD4AE07A1D361 /* Binding+Extension.swift */,
 				363AD97C968D56EEF71F7BBD /* LocationFetcher.swift */,
-				363AD1C857179623D9B80B9A /* LocationManager.swift */,
+				363ADAE4EF93E055CD85A344 /* IsLoading.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -172,6 +176,8 @@
 				363ADBD3C7E1EF6E10BDD8E0 /* DaysOfWeekPicker.swift */,
 				363AD58843DEF4F0EAE1B019 /* AutoLocate.swift */,
 				363AD854D4C21A1D07C26FF5 /* ManualAddressEntry.swift */,
+				363ADA5478F766288548DB5F /* LoadingView.swift */,
+				363ADA1CB5B65789A527B072 /* ActivityView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -272,7 +278,9 @@
 				363ADE6E418C730776233EA4 /* Binding+Extension.swift in Sources */,
 				363ADB08228105CA0F1409CB /* ManualAddressEntry.swift in Sources */,
 				363ADCA936D482B37B553B5D /* LocationFetcher.swift in Sources */,
-				363ADB6D701EA058751A818C /* LocationManager.swift in Sources */,
+				363ADDB8E18E075DB533D02D /* LoadingView.swift in Sources */,
+				363AD8BE89A6A3C0F5C2152C /* ActivityView.swift in Sources */,
+				363ADB29237DFB8FABA96B1F /* IsLoading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

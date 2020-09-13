@@ -3,7 +3,7 @@ import CoreLocation
 import MapKit
 
 struct AutoLocate: View {
-    @ObservedObject var lm = LocationManager()
+    @EnvironmentObject var isLoading: IsLoading
 
     @Binding var autoLocate: Bool
     @Binding var latitude: Double
@@ -23,11 +23,25 @@ struct AutoLocate: View {
     }
 
     func getCurrentLocation() {
-        self.latitude = self.lm.location!.coordinate.latitude
-        self.longitude = self.lm.location!.coordinate.longitude
+        let locationManager = CLLocationManager()
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
-        print("\nlat: \(self.latitude)")
-        print("\nlong: \(self.longitude)")
+        locationManager.startUpdatingLocation()
+
+        self.isLoading.isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            let locValue: CLLocationCoordinate2D = locationManager.location!.coordinate
+
+            self.latitude = locValue.latitude
+            self.longitude = locValue.longitude
+
+            print("\nlat: \(self.latitude)")
+            print("\nlong: \(self.longitude)")
+
+            locationManager.stopUpdatingLocation()
+            self.isLoading.isLoading = false
+        })
     }
 
     func setDefault() {

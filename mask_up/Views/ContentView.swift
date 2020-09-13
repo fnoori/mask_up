@@ -3,6 +3,7 @@ import CoreLocation
 import UserNotifications
 
 struct ContentView: View {
+    @EnvironmentObject var isLoading: IsLoading
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(entity: MaskReminder.entity(), sortDescriptors: [])
 
@@ -89,8 +90,7 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 .sheet(isPresented: $showNewEntryModal) {
-//                    NewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
-                    NewNewDataSheet().environment(\.managedObjectContext, self.managedObjectContext)
+                    NewNewDataSheet().environment(\.managedObjectContext, self.managedObjectContext).environmentObject(self.isLoading)
                 }
             )
             .sheet(isPresented: $showEditEntryModal) {

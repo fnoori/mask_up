@@ -1,11 +1,3 @@
-//
-//  SceneDelegate.swift
-//  mask_up
-//
-//  Created by Farzam Noori on 2020-08-11.
-//  Copyright © 2020 Farzam Noori. All rights reserved.
-//
-
 import UIKit
 import SwiftUI
 
@@ -21,10 +13,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
+
+        let isLoading = IsLoading()
+
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environment(\.managedObjectContext, context)
+        let contentView = ContentView().environment(\.managedObjectContext, context).environmentObject(isLoading)
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
