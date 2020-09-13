@@ -40,7 +40,7 @@ struct ContentView: View {
                 print(error.localizedDescription)
             }
         }
-        
+
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
             locationManager.requestWhenInUseAuthorization()

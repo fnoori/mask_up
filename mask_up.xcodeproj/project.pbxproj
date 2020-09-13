@@ -10,6 +10,7 @@
 		363AD3306781E2804A04869C /* AutoLocate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD58843DEF4F0EAE1B019 /* AutoLocate.swift */; };
 		363AD4FD82BEFE690170BEF6 /* ReminderTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD7BA375CD74ACE33ADD8 /* ReminderTimePicker.swift */; };
 		363AD8BE89A6A3C0F5C2152C /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363ADA1CB5B65789A527B072 /* ActivityView.swift */; };
+		363AD955F647A7C77BD1EB18 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD20DB2A220B3ED12FD4A /* LocationModel.swift */; };
 		363ADB08228105CA0F1409CB /* ManualAddressEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD854D4C21A1D07C26FF5 /* ManualAddressEntry.swift */; };
 		363ADB29237DFB8FABA96B1F /* IsLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363ADAE4EF93E055CD85A344 /* IsLoading.swift */; };
 		363ADB4FC9579AF36B4B95F7 /* NewNewDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AD5EB9AE24943CE8F5DBD /* NewNewDataSheet.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		363AD20DB2A220B3ED12FD4A /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		363AD58843DEF4F0EAE1B019 /* AutoLocate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLocate.swift; sourceTree = "<group>"; };
 		363AD5EB9AE24943CE8F5DBD /* NewNewDataSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNewDataSheet.swift; sourceTree = "<group>"; };
 		363AD7BA375CD74ACE33ADD8 /* ReminderTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTimePicker.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				363ADC0A714BD4AE07A1D361 /* Binding+Extension.swift */,
 				363AD97C968D56EEF71F7BBD /* LocationFetcher.swift */,
 				363ADAE4EF93E055CD85A344 /* IsLoading.swift */,
+				363AD20DB2A220B3ED12FD4A /* LocationModel.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				363ADDB8E18E075DB533D02D /* LoadingView.swift in Sources */,
 				363AD8BE89A6A3C0F5C2152C /* ActivityView.swift in Sources */,
 				363ADB29237DFB8FABA96B1F /* IsLoading.swift in Sources */,
+				363AD955F647A7C77BD1EB18 /* LocationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

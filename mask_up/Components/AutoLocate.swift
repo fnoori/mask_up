@@ -4,10 +4,13 @@ import MapKit
 
 struct AutoLocate: View {
     @EnvironmentObject var isLoading: IsLoading
+    @ObservedObject var locationModel = LocationModel()
 
     @Binding var autoLocate: Bool
     @Binding var latitude: Double
     @Binding var longitude: Double
+
+    var locationManager = CLLocationManager()
 
     var body: some View {
         Toggle(isOn: $autoLocate.didSet { (state) in
@@ -23,25 +26,47 @@ struct AutoLocate: View {
     }
 
     func getCurrentLocation() {
-        let locationManager = CLLocationManager()
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        if self.locationModel.authorisationStatus != .authorizedWhenInUse {
+//            self.locationModel.requestAuthorisation()
+//        }
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            self.askForLocationPermission()
+        }
 
-        locationManager.startUpdatingLocation()
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            self.locationManager.distanceFilter = kCLDistanceFilterNone
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
 
-        self.isLoading.isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            let locValue: CLLocationCoordinate2D = locationManager.location!.coordinate
+            self.isLoading.isLoading = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                let locValue: CLLocationCoordinate2D = self.locationManager.location!.coordinate
 
-            self.latitude = locValue.latitude
-            self.longitude = locValue.longitude
+                self.latitude = locValue.latitude
+                self.longitude = locValue.longitude
 
-            print("\nlat: \(self.latitude)")
-            print("\nlong: \(self.longitude)")
+                print("\nlat: \(self.latitude)")
+                print("\nlong: \(self.longitude)")
 
-            locationManager.stopUpdatingLocation()
-            self.isLoading.isLoading = false
-        })
+                self.locationManager.stopUpdatingLocation()
+                self.isLoading.isLoading = false
+            })
+        } else {
+            self.autoLocate.toggle()
+        }
+    }
+
+    func askForLocationPermission() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            print("need location to use location based notification")
+            break
+        default:
+            print("need location for location based notification")
+        }
     }
 
     func setDefault() {
