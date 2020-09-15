@@ -18,13 +18,12 @@ class LocationModel: NSObject, ObservableObject {
             print("need location to use location based notification")
             break
         default:
-            print("need location for location based notificaion")
+            print("need location for location based notification")
         }
-//        if always {
-//            self.locationManager.requestAlwaysAuthorization()
-//        } else {
-//            self.locationManager.requestWhenInUseAuthorization()
-//        }
+    }
+    
+    public func getLocationManager() -> CLLocationManager {
+        self.locationManager
     }
 }
 

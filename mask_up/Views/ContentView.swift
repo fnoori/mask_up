@@ -4,6 +4,7 @@ import UserNotifications
 
 struct ContentView: View {
     @EnvironmentObject var isLoading: IsLoading
+    @EnvironmentObject var locationModel: LocationModel
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(entity: MaskReminder.entity(), sortDescriptors: [])
 
@@ -41,16 +42,16 @@ struct ContentView: View {
             }
         }
 
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            self.locationManager.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            print("need location to use location based notification")
-            break
-        default:
-            print("need location for location based notificaion")
-        }
+//        switch CLLocationManager.authorizationStatus() {
+//        case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
+//            locationManager.requestWhenInUseAuthorization()
+//            self.locationManager.requestWhenInUseAuthorization()
+//        case .restricted, .denied:
+//            print("need location to use location based notification")
+//            break
+//        default:
+//            print("need location for location based notificaion")
+//        }
         
         
         let center = UNUserNotificationCenter.current()
@@ -90,7 +91,10 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 .sheet(isPresented: $showNewEntryModal) {
-                    NewNewDataSheet().environment(\.managedObjectContext, self.managedObjectContext).environmentObject(self.isLoading)
+                    NewDataSheet()
+                            .environment(\.managedObjectContext, self.managedObjectContext)
+                            .environmentObject(self.isLoading)
+                            .environmentObject(self.locationModel)
                 }
             )
             .sheet(isPresented: $showEditEntryModal) {
