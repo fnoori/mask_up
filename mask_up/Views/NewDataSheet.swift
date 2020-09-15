@@ -71,18 +71,20 @@ struct NewDataSheet: View {
                 .keyboardResponsive()
                 .navigationBarTitle("New Reminder", displayMode: .inline)
                 .navigationBarItems(
-                        leading: Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Text("Cancel")
-                        },
-                        trailing: Button(action: {
-                            self.reminderModel.daysOfWeek = self.daysOfWeek
-                            self.reminderModel.time = self.time
-                            self.newDataSheetService.createNewReminder(reminder: self.reminderModel)
-                        }) {
-                            Text("Done")
-                        }.disabled(!self.canPressDone())
+                    leading: Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Cancel")
+                    },
+                    trailing: Button(action: {
+                        self.reminderModel.daysOfWeek = self.daysOfWeek
+                        self.reminderModel.time = self.time
+                        self.newDataSheetService.createNewReminder(reminder: self.reminderModel)
+
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Done")
+                    }.disabled(!self.canPressDone())
                 )
             }
         }

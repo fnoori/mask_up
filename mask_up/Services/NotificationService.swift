@@ -31,9 +31,9 @@ class NotificationService {
 
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             let request = UNNotificationRequest(
-                    identifier: "\(weekday)_\(newReminder.id!.uuidString)",
-                    content: content,
-                    trigger: trigger
+                identifier: "\(weekday)_\(newReminder.id!.uuidString)",
+                content: content,
+                trigger: trigger
             )
 
             let notificationCentre = UNUserNotificationCenter.current()
@@ -50,7 +50,7 @@ class NotificationService {
     }
 
     private func parseWeekday(weekday: Int) -> Int {
-        weekday + 2
+        weekday + 1
     }
 
     private func parseHour(date: Date) -> Int {

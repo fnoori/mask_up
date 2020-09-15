@@ -23,15 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70544077-2913-4e76-835d-e535c8f10cce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mask_up/Services/LocationService.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mask_up/Services/NewDataSheetService.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mask_up/Services/NotificationService.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/Components/AutoLocate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Components/AutoLocate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/Utilities/LocationFetcher.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Services/NotificationService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Services/NotificationService.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +66,8 @@
       <workItem from="1599934271781" duration="818000" />
       <workItem from="1599936028757" duration="189000" />
       <workItem from="1599936680409" duration="5176000" />
-      <workItem from="1599961495083" duration="7406000" />
+      <workItem from="1599961495083" duration="7626000" />
+      <workItem from="1600143338821" duration="505000" />
     </task>
     <task id="LOCAL-00001" summary="- added loading spinner&#10;- created global observable IsLoading.swift&#10;- now displays loading spinner when locating&#10;- deleted old way of getting location">
       <created>1599959980970</created>
@@ -103,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600138814730</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- now able to delete notification and it deletes all the notification objects&#10;- created new service objects to help extrapolate code">
+      <created>1600142997811</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1600142997811</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +138,8 @@
     <MESSAGE value="- added activity view" />
     <MESSAGE value="- trying to get the location permission dialog to popup everytie" />
     <MESSAGE value="- can now request for location only when choosing &quot;locate me&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="- can now request for location only when choosing &quot;locate me&quot;" />
+    <MESSAGE value="- now able to delete notification and it deletes all the notification objects&#10;- created new service objects to help extrapolate code" />
+    <option name="LAST_COMMIT_MESSAGE" value="- now able to delete notification and it deletes all the notification objects&#10;- created new service objects to help extrapolate code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="453" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1599957762574">
@@ -148,46 +150,46 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="378" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.777@0.23.1280.777" timestamp="1600139773034" />
-    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2" timestamp="1600138814436">
+    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2" timestamp="1600142997563">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1600138814436" />
+    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1600142997563" />
     <state x="6" y="29" width="1268" height="765" maximized="true" key="DiffContextDialog" timestamp="1600142575978">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="6" y="29" width="1268" height="765" maximized="true" key="DiffContextDialog/0.23.1280.777@0.23.1280.777" timestamp="1600142575978" />
-    <state width="1238" height="173" key="GridCell.Tab.0.bottom" timestamp="1600142563686">
+    <state width="1238" height="209" key="GridCell.Tab.0.bottom" timestamp="1600143797017">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600142563686" />
-    <state width="1238" height="173" key="GridCell.Tab.0.center" timestamp="1600142563685">
+    <state width="1238" height="209" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600143797017" />
+    <state width="1238" height="209" key="GridCell.Tab.0.center" timestamp="1600143797016">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1600142563685" />
-    <state width="1238" height="173" key="GridCell.Tab.0.left" timestamp="1600142563685">
+    <state width="1238" height="209" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1600143797016" />
+    <state width="1238" height="209" key="GridCell.Tab.0.left" timestamp="1600143797015">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1600142563685" />
-    <state width="1238" height="173" key="GridCell.Tab.0.right" timestamp="1600142563686">
+    <state width="1238" height="209" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1600143797015" />
+    <state width="1238" height="209" key="GridCell.Tab.0.right" timestamp="1600143797017">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1600142563686" />
-    <state width="1238" height="173" key="GridCell.Tab.1.bottom" timestamp="1600142563689">
+    <state width="1238" height="209" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1600143797017" />
+    <state width="1238" height="209" key="GridCell.Tab.1.bottom" timestamp="1600143797018">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600142563689" />
-    <state width="1238" height="173" key="GridCell.Tab.1.center" timestamp="1600142563687">
+    <state width="1238" height="209" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600143797018" />
+    <state width="1238" height="209" key="GridCell.Tab.1.center" timestamp="1600143797018">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1600142563687" />
-    <state width="1238" height="173" key="GridCell.Tab.1.left" timestamp="1600142563687">
+    <state width="1238" height="209" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1600143797018" />
+    <state width="1238" height="209" key="GridCell.Tab.1.left" timestamp="1600143797017">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1600142563687" />
-    <state width="1238" height="173" key="GridCell.Tab.1.right" timestamp="1600142563689">
+    <state width="1238" height="209" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1600143797017" />
+    <state width="1238" height="209" key="GridCell.Tab.1.right" timestamp="1600143797018">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="173" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1600142563689" />
+    <state width="1238" height="209" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1600143797018" />
     <state x="412" y="121" key="RollbackChangesDialog" timestamp="1599959553810">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -200,10 +202,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.23.1280.777@0.23.1280.777" timestamp="1600138428251" />
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1600138852682">
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1600143015066">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1600138852682" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1600143015065" />
     <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600140821119">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
