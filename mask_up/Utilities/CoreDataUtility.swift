@@ -3,7 +3,7 @@ import CoreData
 import UIKit
 
 class CoreDataUtility {
-    
+
     func retrieveAllData() -> [NSManagedObject]? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -48,8 +48,17 @@ class CoreDataUtility {
             
             let reminderToDelete = maskReminder[0] as! NSManagedObject
             managedContext.delete(reminderToDelete)
-            
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [maskReminderObject.id!.uuidString])
+
+            var notificationToDeleteIds: [String] = []
+            for weekday in maskReminderObject.daysOfWeek {
+                notificationToDeleteIds.append("\(weekday)_\(maskReminderObject.id!.uuidString)")
+            }
+
+            UNUserNotificationCenter
+                .current()
+                .removePendingNotificationRequests(
+                    withIdentifiers: notificationToDeleteIds
+                )
             
             try managedContext.save()
         } catch {

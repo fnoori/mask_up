@@ -17,8 +17,6 @@ struct ContentView: View {
     
     let coreDataUtility = CoreDataUtility()
     
-    let locationManager = CLLocationManager()
-    
     func timeFromDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
@@ -41,18 +39,6 @@ struct ContentView: View {
                 print(error.localizedDescription)
             }
         }
-
-//        switch CLLocationManager.authorizationStatus() {
-//        case .authorizedWhenInUse, .authorizedAlways, .notDetermined:
-//            locationManager.requestWhenInUseAuthorization()
-//            self.locationManager.requestWhenInUseAuthorization()
-//        case .restricted, .denied:
-//            print("need location to use location based notification")
-//            break
-//        default:
-//            print("need location for location based notificaion")
-//        }
-        
         
         let center = UNUserNotificationCenter.current()
         center.getPendingNotificationRequests(completionHandler: { requests in

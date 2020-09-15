@@ -23,14 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70544077-2913-4e76-835d-e535c8f10cce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mask_up/Services/LocationService.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Services/NewDataSheetService.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mask_up/Services/NotificationService.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mask_up.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mask_up/Components/AutoLocate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Components/AutoLocate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/SceneDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/SceneDelegate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/Utilities/LocationModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Utilities/LocationModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Utilities/LocationFetcher.swift" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/Views/NewNewDataSheet.swift" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +73,7 @@
       <workItem from="1599934271781" duration="818000" />
       <workItem from="1599936028757" duration="189000" />
       <workItem from="1599936680409" duration="5176000" />
-      <workItem from="1599961495083" duration="3415000" />
+      <workItem from="1599961495083" duration="7406000" />
     </task>
     <task id="LOCAL-00001" summary="- added loading spinner&#10;- created global observable IsLoading.swift&#10;- now displays loading spinner when locating&#10;- deleted old way of getting location">
       <created>1599959980970</created>
@@ -94,11 +96,28 @@
       <option name="project" value="LOCAL" />
       <updated>1599962423599</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- can now request for location only when choosing &quot;locate me&quot;">
+      <created>1600138814730</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1600138814730</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -117,53 +136,58 @@
     <MESSAGE value="- added loading spinner&#10;- created global observable IsLoading.swift&#10;- now displays loading spinner when locating&#10;- deleted old way of getting location" />
     <MESSAGE value="- added activity view" />
     <MESSAGE value="- trying to get the location permission dialog to popup everytie" />
-    <option name="LAST_COMMIT_MESSAGE" value="- trying to get the location permission dialog to popup everytie" />
+    <MESSAGE value="- can now request for location only when choosing &quot;locate me&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="- can now request for location only when choosing &quot;locate me&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="453" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1599957762574">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="453" y="134" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1599957762574" />
-    <state x="378" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600138756659">
+    <state x="378" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600139773034">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="378" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.777@0.23.1280.777" timestamp="1600138756659" />
-    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2" timestamp="1599962422998">
+    <state x="378" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.777@0.23.1280.777" timestamp="1600139773034" />
+    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2" timestamp="1600138814436">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1599962422998" />
-    <state width="1238" height="198" key="GridCell.Tab.0.bottom" timestamp="1600138477651">
+    <state x="0" y="23" width="1280" height="777" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1600138814436" />
+    <state x="6" y="29" width="1268" height="765" maximized="true" key="DiffContextDialog" timestamp="1600142575978">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="198" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600138477651" />
-    <state width="1238" height="198" key="GridCell.Tab.0.center" timestamp="1600138477650">
+    <state x="6" y="29" width="1268" height="765" maximized="true" key="DiffContextDialog/0.23.1280.777@0.23.1280.777" timestamp="1600142575978" />
+    <state width="1238" height="173" key="GridCell.Tab.0.bottom" timestamp="1600142563686">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="198" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1600138477650" />
-    <state width="1238" height="198" key="GridCell.Tab.0.left" timestamp="1600138477650">
+    <state width="1238" height="173" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600142563686" />
+    <state width="1238" height="173" key="GridCell.Tab.0.center" timestamp="1600142563685">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="198" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1600138477650" />
-    <state width="1238" height="198" key="GridCell.Tab.0.right" timestamp="1600138477651">
+    <state width="1238" height="173" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1600142563685" />
+    <state width="1238" height="173" key="GridCell.Tab.0.left" timestamp="1600142563685">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="198" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1600138477651" />
-    <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1600137672068">
+    <state width="1238" height="173" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1600142563685" />
+    <state width="1238" height="173" key="GridCell.Tab.0.right" timestamp="1600142563686">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="246" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600137672068" />
-    <state width="1238" height="246" key="GridCell.Tab.1.center" timestamp="1600137672067">
+    <state width="1238" height="173" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1600142563686" />
+    <state width="1238" height="173" key="GridCell.Tab.1.bottom" timestamp="1600142563689">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="246" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1600137672067" />
-    <state width="1238" height="246" key="GridCell.Tab.1.left" timestamp="1600137672066">
+    <state width="1238" height="173" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600142563689" />
+    <state width="1238" height="173" key="GridCell.Tab.1.center" timestamp="1600142563687">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="246" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1600137672066" />
-    <state width="1238" height="246" key="GridCell.Tab.1.right" timestamp="1600137672067">
+    <state width="1238" height="173" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1600142563687" />
+    <state width="1238" height="173" key="GridCell.Tab.1.left" timestamp="1600142563687">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="246" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1600137672067" />
+    <state width="1238" height="173" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1600142563687" />
+    <state width="1238" height="173" key="GridCell.Tab.1.right" timestamp="1600142563689">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="173" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1600142563689" />
     <state x="412" y="121" key="RollbackChangesDialog" timestamp="1599959553810">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -176,18 +200,18 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.23.1280.777@0.23.1280.777" timestamp="1600138428251" />
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1599962598538">
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1600138852682">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1599962598538" />
-    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599961259597">
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1600138852682" />
+    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600140821119">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1280.777@0.23.1280.777" timestamp="1599961259597" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1600138151156">
+    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1280.777@0.23.1280.777" timestamp="1600140821119" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1600141448926">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1600138151156" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1600141448926" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -196,6 +220,16 @@
           <url>file://$PROJECT_DIR$/mask_up/Components/AutoLocate.swift</url>
           <line>28</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/mask_up/Services/NewDataSheetService.swift</url>
+          <line>20</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/mask_up/Views/ContentView.swift</url>
+          <line>26</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

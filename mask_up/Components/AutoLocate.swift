@@ -33,7 +33,9 @@ struct AutoLocate: View {
 
             self.isLoading.isLoading = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                let locValue: CLLocationCoordinate2D = self.locationModel.getLocationManager().location!.coordinate
+                let locValue: CLLocationCoordinate2D = self.locationModel
+                        .getLocationManager()
+                        .location!.coordinate
 
                 self.latitude = locValue.latitude
                 self.longitude = locValue.longitude

@@ -11,6 +11,9 @@ struct NewDataSheet: View {
 
     @State var reminderModel = MaskReminderModel()
     @State var daysOfWeek: [Int] = []
+    @State var time: Date = Date()
+
+    let newDataSheetService = NewDataSheetService()
 
     var body: some View {
         LoadingView(isShowing: .constant(self.isLoading.isLoading)) {
@@ -24,24 +27,43 @@ struct NewDataSheet: View {
 
                     if self.chosenReminderType == 0 {
                         Section(header: Text("General")) {
-                            ReminderTimePicker(time: self.$reminderModel.time)
+                            ReminderTimePicker(time: self.$time)
                         }
 
                         Section(header: Text("some")) {
                             DaysOfWeekPicker(daysOfWeek: self.$daysOfWeek)
                         }
                     } else {
-                        Section(header: Text("Radius Limit"), footer: Text("How far do you want to walk away from the specified location before you receive a notification.")) {
-                            Stepper("Metres \(self.reminderModel.radius)", value: self.$reminderModel.radius, in: 0...50, step: 5)
+                        Section(
+                            header: Text("Radius Limit"),
+                            footer: Text("How far do you want to walk away from the specified location before you receive a notification.")
+                        ) {
+                            Stepper(
+                                "Metres \(self.reminderModel.radius)",
+                                value: self.$reminderModel.radius,
+                                in: 0...50, step: 5
+                            )
                         }
 
-                        Section(header: Text(""), footer: Text("Uses your current location to set the location reminder's centre.")) {
-                            AutoLocate(autoLocate: self.$autoLocate, latitude: self.$reminderModel.latitude, longitude: self.$reminderModel.longitude).environmentObject(self.isLoading)
+                        Section(
+                            header: Text(""),
+                            footer: Text("Uses your current location to set the location reminder's centre.")
+                        ) {
+                            AutoLocate(
+                                autoLocate: self.$autoLocate,
+                                latitude: self.$reminderModel.latitude,
+                                longitude: self.$reminderModel.longitude
+                            )
+                            .environmentObject(self.isLoading)
                         }
 
                         if self.autoLocate == false {
                             Section(header: Text(""), footer: Text("Manually input your address.")) {
-                                ManualAddressEntry(address: self.$reminderModel.address, latitude: self.$reminderModel.latitude, longitude: self.$reminderModel.longitude)
+                                ManualAddressEntry(
+                                    address: self.$reminderModel.address,
+                                    latitude: self.$reminderModel.latitude,
+                                    longitude: self.$reminderModel.longitude
+                                )
                             }
                         }
                     }
@@ -55,7 +77,9 @@ struct NewDataSheet: View {
                             Text("Cancel")
                         },
                         trailing: Button(action: {
-                            print("saved")
+                            self.reminderModel.daysOfWeek = self.daysOfWeek
+                            self.reminderModel.time = self.time
+                            self.newDataSheetService.createNewReminder(reminder: self.reminderModel)
                         }) {
                             Text("Done")
                         }.disabled(!self.canPressDone())
@@ -66,7 +90,7 @@ struct NewDataSheet: View {
 
     func canPressDone() -> Bool {
         self.chosenReminderType == 0
-                || self.chosenReminderType == 1 && (self.reminderModel.latitude != 0.0 && self.reminderModel.longitude != 0.0)
+        || self.chosenReminderType == 1 && (self.reminderModel.latitude != 0.0 && self.reminderModel.longitude != 0.0)
     }
 }
 
