@@ -12,6 +12,10 @@ struct NewDataSheet: View {
     @State var reminderModel = MaskReminderModel()
     @State var daysOfWeek: [Int] = []
     @State var time: Date = Date()
+    @State var radius: Int = 0
+    @State var address: String = ""
+    @State var lat: Double = 0.0
+    @State var long: Double = 0.0
 
     let newDataSheetService = NewDataSheetService()
 
@@ -39,8 +43,8 @@ struct NewDataSheet: View {
                             footer: Text("How far do you want to walk away from the specified location before you receive a notification.")
                         ) {
                             Stepper(
-                                "Metres \(self.reminderModel.radius)",
-                                value: self.$reminderModel.radius,
+                                "Metres \(self.radius)",
+                                value: self.$radius,
                                 in: 0...50, step: 5
                             )
                         }
@@ -60,9 +64,9 @@ struct NewDataSheet: View {
                         if self.autoLocate == false {
                             Section(header: Text(""), footer: Text("Manually input your address.")) {
                                 ManualAddressEntry(
-                                    address: self.$reminderModel.address,
-                                    latitude: self.$reminderModel.latitude,
-                                    longitude: self.$reminderModel.longitude
+                                    address: self.$address,
+                                    latitude: self.$lat,
+                                    longitude: self.$long
                                 )
                             }
                         }
@@ -77,9 +81,7 @@ struct NewDataSheet: View {
                         Text("Cancel")
                     },
                     trailing: Button(action: {
-                        self.reminderModel.daysOfWeek = self.daysOfWeek
-                        self.reminderModel.time = self.time
-                        self.newDataSheetService.createNewReminder(reminder: self.reminderModel)
+                        self.populateOtherModel()
 
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
@@ -90,9 +92,20 @@ struct NewDataSheet: View {
         }
     }
 
+    func populateOtherModel() {
+        self.reminderModel.daysOfWeek = self.daysOfWeek
+        self.reminderModel.time = self.time
+        self.reminderModel.radius = Int16(self.radius)
+        self.reminderModel.latitude = self.lat
+        self.reminderModel.longitude = self.long
+        self.reminderModel.address = self.address
+
+        self.newDataSheetService.createNewReminder(reminder: self.reminderModel)
+    }
+
     func canPressDone() -> Bool {
         self.chosenReminderType == 0
-        || self.chosenReminderType == 1 && (self.reminderModel.latitude != 0.0 && self.reminderModel.longitude != 0.0)
+        || self.chosenReminderType == 1 && (self.lat != 0.0 && self.long != 0.0)
     }
 }
 

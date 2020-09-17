@@ -1,5 +1,4 @@
 import Foundation
-import SwiftUI
 
 class MaskReminderModel {
     var latitude: Double = 0.0

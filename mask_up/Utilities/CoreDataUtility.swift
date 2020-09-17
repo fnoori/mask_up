@@ -50,8 +50,12 @@ class CoreDataUtility {
             managedContext.delete(reminderToDelete)
 
             var notificationToDeleteIds: [String] = []
-            for weekday in maskReminderObject.daysOfWeek {
-                notificationToDeleteIds.append("\(weekday)_\(maskReminderObject.id!.uuidString)")
+            if maskReminderObject.daysOfWeek.count > 0 {
+                for weekday in maskReminderObject.daysOfWeek {
+                    notificationToDeleteIds.append("\(weekday)_\(maskReminderObject.id!.uuidString)")
+                }
+            } else {
+                notificationToDeleteIds.append(maskReminderObject.id!.uuidString)
             }
 
             UNUserNotificationCenter

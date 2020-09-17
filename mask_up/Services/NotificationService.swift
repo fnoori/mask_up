@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import CoreLocation
 
 class NotificationService {
     public func buildNotification(newReminder: MaskReminder) {
@@ -46,7 +47,22 @@ class NotificationService {
     }
 
     private func createLocationBasedNotification(newReminder: MaskReminder, content: UNMutableNotificationContent) {
+        let centre = CLLocationCoordinate2D(latitude: newReminder.latitude, longitude: newReminder.longitude)
+        let region = CLCircularRegion(center: centre, radius: CLLocationDistance(newReminder.radius), identifier: newReminder.id!.uuidString)
 
+        region.notifyOnExit = true
+        region.notifyOnEntry = false
+
+        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+        let request = UNNotificationRequest(identifier: newReminder.id!.uuidString, content: content, trigger: trigger)
+
+        let notificationCentre = UNUserNotificationCenter.current()
+
+        notificationCentre.add(request) { (error) in
+            if error != nil {
+                print("Could not save notification")
+            }
+        }
     }
 
     private func parseWeekday(weekday: Int) -> Int {
