@@ -3,7 +3,7 @@ import SwiftUI
 import CoreLocation
 
 class NotificationService {
-    public func buildNotification(newReminder: MaskReminder) {
+    public func buildNotification(newReminder: MaskReminder, isEditing: Bool) {
         let content = UNMutableNotificationContent()
 
         content.title = "Don't forget your mask"
@@ -11,9 +11,9 @@ class NotificationService {
         content.sound = UNNotificationSound.default
 
         if isLocationBased(reminder: newReminder) {
-            self.createLocationBasedNotification(newReminder: newReminder, content: content)
+            self.createLocationBasedNotification(newReminder: newReminder, content: content, isEditing: isEditing)
         } else {
-            self.createBasicNotification(newReminder: newReminder, content: content)
+            self.createBasicNotification(newReminder: newReminder, content: content, isEditing: isEditing)
         }
     }
 
@@ -21,8 +21,16 @@ class NotificationService {
         reminder.longitude != 0.0 && reminder.latitude != 0.0
     }
 
-    private func createBasicNotification(newReminder: MaskReminder, content: UNMutableNotificationContent) {
+    private func createBasicNotification(newReminder: MaskReminder, content: UNMutableNotificationContent, isEditing: Bool) {
         for weekday in newReminder.daysOfWeek {
+            if isEditing {
+                UNUserNotificationCenter
+                    .current()
+                    .removePendingNotificationRequests(
+                            withIdentifiers: ["\(weekday)_\(newReminder.id!.uuidString)"]
+                    )
+            }
+
             var dateComponents = DateComponents()
             dateComponents.calendar = Calendar.current
 
@@ -46,7 +54,15 @@ class NotificationService {
         }
     }
 
-    private func createLocationBasedNotification(newReminder: MaskReminder, content: UNMutableNotificationContent) {
+    private func createLocationBasedNotification(newReminder: MaskReminder, content: UNMutableNotificationContent, isEditing: Bool) {
+        if isEditing {
+            UNUserNotificationCenter
+                .current()
+                .removePendingNotificationRequests(
+                        withIdentifiers: [newReminder.id!.uuidString]
+                )
+        }
+
         let centre = CLLocationCoordinate2D(latitude: newReminder.latitude, longitude: newReminder.longitude)
         let region = CLCircularRegion(center: centre, radius: CLLocationDistance(newReminder.radius), identifier: newReminder.id!.uuidString)
 

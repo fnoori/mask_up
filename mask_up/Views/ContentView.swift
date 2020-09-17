@@ -57,11 +57,11 @@ struct ContentView: View {
                     if self.maskReminders.count > 0 {
                         ForEach(maskReminders) { maskReminder in
                             MaskReminderRow(maskReminder: maskReminder)
-                                .onTapGesture {
-                                    if self.isEditMode == .active {
-                                        self.selectedMaskReminder = maskReminder
-                                        self.showEditEntryModal.toggle()
-                                    }
+                            .onTapGesture {
+                                if self.isEditMode == .active {
+                                    self.selectedMaskReminder = maskReminder
+                                    self.showEditEntryModal.toggle()
+                                }
                             }
                         }
                         .onDelete(perform: delete)
@@ -78,14 +78,26 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $showNewEntryModal) {
                     NewDataSheet()
-                            .environment(\.managedObjectContext, self.managedObjectContext)
-                            .environmentObject(self.isLoading)
-                            .environmentObject(self.locationModel)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
+                        .environmentObject(self.isLoading)
+                        .environmentObject(self.locationModel)
                 }
             )
             .sheet(isPresented: $showEditEntryModal) {
                 if self.selectedMaskReminder != nil {
-                    EditDataSheet(maskReminder: self.selectedMaskReminder!).environment(\.managedObjectContext, self.managedObjectContext)
+//                    EditDataSheet(maskReminder: self.selectedMaskReminder!).environment(\.managedObjectContext, self.managedObjectContext)
+                    NewDataSheet(
+                        label: self.selectedMaskReminder!.label,
+                        daysOfWeek: self.selectedMaskReminder!.daysOfWeek,
+                        time: self.selectedMaskReminder!.time,
+                        radius: Int(self.selectedMaskReminder!.radius),
+                        address: self.selectedMaskReminder!.address,
+                        lat: self.selectedMaskReminder!.latitude,
+                        long: self.selectedMaskReminder!.longitude
+                    )
+                    .environment(\.managedObjectContext, self.managedObjectContext)
+                    .environmentObject(self.isLoading)
+                    .environmentObject(self.locationModel)
                 }
             }
             .environment(\.editMode, self.$isEditMode)

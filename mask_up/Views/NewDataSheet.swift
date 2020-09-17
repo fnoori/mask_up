@@ -10,6 +10,7 @@ struct NewDataSheet: View {
     @State var autoLocate = false
 
     @State var reminderModel = MaskReminderModel()
+    @State var label: String = ""
     @State var daysOfWeek: [Int] = []
     @State var time: Date = Date()
     @State var radius: Int = 0
@@ -18,6 +19,26 @@ struct NewDataSheet: View {
     @State var long: Double = 0.0
 
     let newDataSheetService = NewDataSheetService()
+    var isEditing: Bool = false
+
+    init(label: String?, daysOfWeek: [Int]?,
+         time: Date?, radius: Int?, address: String?,
+         lat: Double?, long: Double?) {
+
+        self._label = label != nil ? State.init(initialValue: label!) : State.init(initialValue: "")
+        self._daysOfWeek = daysOfWeek != nil ? State.init(initialValue: daysOfWeek!) : State.init(initialValue: [])
+        self._time = time != nil ? State.init(initialValue: time!) : State.init(initialValue: Date())
+        self._radius = radius != nil ? State.init(initialValue: radius!) : State.init(initialValue: 0)
+        self._address = address != nil ? State.init(initialValue: address!) : State.init(initialValue: "")
+        self._lat = lat != nil ? State.init(initialValue: lat!) : State.init(initialValue: 0.0)
+        self._long = long != nil ? State.init(initialValue: long!) : State.init(initialValue: 0.0)
+
+        self.isEditing = true
+    }
+
+    init() {
+        self.isEditing = false
+    }
 
     var body: some View {
         LoadingView(isShowing: .constant(self.isLoading.isLoading)) {
@@ -27,7 +48,7 @@ struct NewDataSheet: View {
                         ReminderTypePicker(chosenReminderType: self.$chosenReminderType)
                     }.pickerStyle(SegmentedPickerStyle())
 
-                    TextField("Label", text: self.$reminderModel.label)
+                    TextField("Label", text: self.$label)
 
                     if self.chosenReminderType == 0 {
                         Section(header: Text("General")) {
@@ -93,6 +114,7 @@ struct NewDataSheet: View {
     }
 
     func populateOtherModel() {
+        self.reminderModel.label = self.label
         self.reminderModel.daysOfWeek = self.daysOfWeek
         self.reminderModel.time = self.time
         self.reminderModel.radius = Int16(self.radius)
@@ -100,7 +122,7 @@ struct NewDataSheet: View {
         self.reminderModel.longitude = self.long
         self.reminderModel.address = self.address
 
-        self.newDataSheetService.createNewReminder(reminder: self.reminderModel)
+        self.newDataSheetService.createNewReminder(reminder: self.reminderModel, isEditing: self.isEditing)
     }
 
     func canPressDone() -> Bool {

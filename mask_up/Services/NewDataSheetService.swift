@@ -17,7 +17,36 @@ class NewDataSheetService {
         self.notificationService = NotificationService()
     }
 
-    public func createNewReminder(reminder: MaskReminderModel) {
+    public func createNewReminder(reminder: MaskReminderModel, isEditing: Bool) {
+        if isEditing {
+            editExistingReminder(reminder: reminder)
+        } else {
+            let newReminder = MaskReminder(context: self.managedContext)
+
+            newReminder.id = UUID()
+            newReminder.label = reminder.label
+
+            newReminder.latitude = reminder.latitude
+            newReminder.longitude = reminder.longitude
+            newReminder.radius = reminder.radius
+
+            newReminder.address = reminder.address
+            newReminder.time = reminder.time
+
+            newReminder.isActive = true
+            newReminder.daysOfWeek = reminder.daysOfWeek
+
+            do {
+                try self.managedContext.save()
+
+                self.notificationService.buildNotification(newReminder: newReminder, isEditing: isEditing)
+            } catch {
+                print("Tried to save but an error occurred\n\(error.localizedDescription)")
+            }
+        }
+    }
+
+    private func editExistingReminder(reminder: MaskReminderModel) {
         let newReminder = MaskReminder(context: self.managedContext)
 
         newReminder.id = UUID()
@@ -34,11 +63,11 @@ class NewDataSheetService {
         newReminder.daysOfWeek = reminder.daysOfWeek
 
         do {
-            try self.managedContext.save()
+            try coreDataUtility.updateData(updatedReminder: newReminder)
 
-            self.notificationService.buildNotification(newReminder: newReminder)
+            self.notificationService.buildNotification(newReminder: newReminder, isEditing: true)
         } catch {
-            print("Tried to save but an error occurred\n\(error.localizedDescription)")
+            print("Tried updating but an error occurred\n\(error.localizedDescription)")
         }
     }
 }

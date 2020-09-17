@@ -24,7 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="70544077-2913-4e76-835d-e535c8f10cce" name="Default Changelist" comment="- when deleting location based, it also deletes notification properly&#10;- can now set location based notification">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask_up/Components/MaskReminderRow.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Components/MaskReminderRow.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Services/NewDataSheetService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Services/NewDataSheetService.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Services/NotificationService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Services/NotificationService.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/ContentView.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +74,8 @@
       <workItem from="1600308389247" duration="2667000" />
       <workItem from="1600311496264" duration="676000" />
       <workItem from="1600312292694" duration="1126000" />
-      <workItem from="1600313724415" duration="984000" />
+      <workItem from="1600313724415" duration="4260000" />
+      <workItem from="1600318090939" duration="1592000" />
     </task>
     <task id="LOCAL-00001" summary="- added loading spinner&#10;- created global observable IsLoading.swift&#10;- now displays loading spinner when locating&#10;- deleted old way of getting location">
       <created>1599959980970</created>
@@ -178,38 +182,38 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="6" y="29" width="1268" height="765" maximized="true" key="DiffContextDialog/0.23.1280.777@0.23.1280.777" timestamp="1600142575978" />
-    <state width="925" height="146" key="GridCell.Tab.0.bottom" timestamp="1600314697685">
+    <state width="1238" height="159" key="GridCell.Tab.0.bottom" timestamp="1600319727511">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="925" height="146" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600314697685" />
-    <state width="925" height="146" key="GridCell.Tab.0.center" timestamp="1600314697684">
+    <state width="1238" height="159" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600319727511" />
+    <state width="1238" height="159" key="GridCell.Tab.0.center" timestamp="1600319727510">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="925" height="146" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1600314697684" />
-    <state width="925" height="146" key="GridCell.Tab.0.left" timestamp="1600314697684">
+    <state width="1238" height="159" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1600319727510" />
+    <state width="1238" height="159" key="GridCell.Tab.0.left" timestamp="1600319727510">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="925" height="146" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1600314697684" />
-    <state width="925" height="146" key="GridCell.Tab.0.right" timestamp="1600314697685">
+    <state width="1238" height="159" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1600319727510" />
+    <state width="1238" height="159" key="GridCell.Tab.0.right" timestamp="1600319727511">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="925" height="146" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1600314697685" />
-    <state width="1238" height="337" key="GridCell.Tab.1.bottom" timestamp="1600313438571">
+    <state width="1238" height="159" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1600319727511" />
+    <state width="1238" height="159" key="GridCell.Tab.1.bottom" timestamp="1600319727513">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="337" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600313438571" />
-    <state width="1238" height="337" key="GridCell.Tab.1.center" timestamp="1600313438570">
+    <state width="1238" height="159" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1600319727513" />
+    <state width="1238" height="159" key="GridCell.Tab.1.center" timestamp="1600319727512">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="337" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1600313438570" />
-    <state width="1238" height="337" key="GridCell.Tab.1.left" timestamp="1600313438570">
+    <state width="1238" height="159" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1600319727512" />
+    <state width="1238" height="159" key="GridCell.Tab.1.left" timestamp="1600319727512">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="337" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1600313438570" />
-    <state width="1238" height="337" key="GridCell.Tab.1.right" timestamp="1600313438570">
+    <state width="1238" height="159" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1600319727512" />
+    <state width="1238" height="159" key="GridCell.Tab.1.right" timestamp="1600319727512">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="337" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1600313438570" />
+    <state width="1238" height="159" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1600319727512" />
     <state x="412" y="121" key="RollbackChangesDialog" timestamp="1599959553810">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -226,47 +230,52 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1600313420649" />
-    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600140821119">
+    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600318451411">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1280.777@0.23.1280.777" timestamp="1600140821119" />
+    <state x="72" y="95" width="1136" height="633" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1280.777@0.23.1280.777" timestamp="1600318451411" />
+    <state x="100" y="123" width="1080" height="577" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1600318451411">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="100" y="123" width="1080" height="577" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.23.1280.777@0.23.1280.777" timestamp="1600318451411" />
     <state x="180" y="147" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600310904640">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="180" y="147" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1280.777@0.23.1280.777" timestamp="1600310904640" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1600313745134">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1600318132111">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1600313745134" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1600318132111" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mask_up/Services/NotificationService.swift</url>
-          <line>49</line>
+          <line>65</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift</url>
-          <line>38</line>
+          <line>92</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/mask_up/Views/NewDataSheet.swift</url>
-          <line>83</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/mask_up/Services/NewDataSheetService.swift</url>
+          <line>49</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/mask_up/Utilities/CoreDataUtility.swift</url>
+          <line>20</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/mask_up/Services/NewDataSheetService.swift</url>
+          <line>20</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="AppleRunConfiguration">
-        <watch expression="self.latitude" language="Swift" />
-        <watch expression="self.longitude" language="Swift" />
-        <watch expression="CLLocationManager.authorizationStatus()" language="Swift" />
-        <watch expression="newReminder.radius" language="Swift" />
-        <watch expression="maskReminderObject.daysOfWeek.count" language="Swift" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
