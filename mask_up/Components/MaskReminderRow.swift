@@ -31,6 +31,11 @@ struct MaskReminderRow: View {
         HStack {
             VStack {
                 HStack {
+                    if self.maskReminder.latitude > 0.0 {
+                        Image(systemName: "location.fill")
+                    } else {
+                        Image(systemName: "location")
+                    }
                     Text(self.timeFromDate(date: self.maskReminder.time))
                         .font(.title)
                     Spacer()
@@ -40,7 +45,7 @@ struct MaskReminderRow: View {
                     Text(self.displayDaysOfWeek(daysOfWeek: self.maskReminder.daysOfWeek))
                         .font(.subheadline)
                     Spacer()
-                }                
+                }
             }
         }.frame(height: 60)
     }

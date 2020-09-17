@@ -55,14 +55,14 @@ struct NewDataSheet: View {
                         ) {
                             AutoLocate(
                                 autoLocate: self.$autoLocate,
-                                latitude: self.$reminderModel.latitude,
-                                longitude: self.$reminderModel.longitude
+                                latitude: self.$lat,
+                                longitude: self.$long
                             )
                             .environmentObject(self.isLoading)
                         }
 
                         if self.autoLocate == false {
-                            Section(header: Text(""), footer: Text("Manually input your address.")) {
+                            Section(header: Text(""), footer: Text("If you don't want to use your location to set the reminder's centre, you can manually enter your address here.")) {
                                 ManualAddressEntry(
                                     address: self.$address,
                                     latitude: self.$lat,
