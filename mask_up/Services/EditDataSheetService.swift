@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class NewDataSheetService {
+class EditDataSheetService {
     private let appDelegate: AppDelegate
     private let managedContext: NSManagedObjectContext
 

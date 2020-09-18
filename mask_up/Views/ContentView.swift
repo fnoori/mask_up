@@ -77,7 +77,7 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 .sheet(isPresented: $showNewEntryModal) {
-                    NewDataSheet()
+                    EditDataSheet()
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(self.isLoading)
                         .environmentObject(self.locationModel)
@@ -86,7 +86,7 @@ struct ContentView: View {
             .sheet(isPresented: $showEditEntryModal) {
                 if self.selectedMaskReminder != nil {
 //                    EditDataSheet(maskReminder: self.selectedMaskReminder!).environment(\.managedObjectContext, self.managedObjectContext)
-                    NewDataSheet(
+                    EditDataSheet(
                         label: self.selectedMaskReminder!.label,
                         daysOfWeek: self.selectedMaskReminder!.daysOfWeek,
                         time: self.selectedMaskReminder!.time,
