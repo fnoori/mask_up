@@ -43,9 +43,7 @@ struct ContentView: View {
         let center = UNUserNotificationCenter.current()
         center.getPendingNotificationRequests(completionHandler: { requests in
             for request in requests {
-                print("\n\n")
-                print(request)
-                print("\n\n")
+                print("\n\(request)\n")
             }
         })
     }
@@ -85,7 +83,6 @@ struct ContentView: View {
             )
             .sheet(isPresented: $showEditEntryModal) {
                 if self.selectedMaskReminder != nil {
-//                    EditDataSheet(maskReminder: self.selectedMaskReminder!).environment(\.managedObjectContext, self.managedObjectContext)
                     EditDataSheet(
                         label: self.selectedMaskReminder!.label,
                         daysOfWeek: self.selectedMaskReminder!.daysOfWeek,

@@ -11,6 +11,6 @@ struct ReminderTypePicker: View {
             ForEach(0 ..< self.reminderType.count) { index in
                 Text(self.reminderType[index]).tag(index)
             }
-        }
+        }.pickerStyle(SegmentedPickerStyle())
     }
 }

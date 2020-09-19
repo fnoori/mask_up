@@ -4,13 +4,13 @@ import UIKit
 
 class CoreDataUtility {
 
-    func updateData(updatedReminder: MaskReminder) throws {
+    func updateData(updatedReminder: MaskReminderModel) throws {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MaskReminder")
-        fetchRequest.predicate = NSPredicate(format: "id = %@", updatedReminder.id! as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", updatedReminder.id as CVarArg)
 
         do {
             if let fetchResult = try managedContext.fetch(fetchRequest) as? [NSManagedObject] {

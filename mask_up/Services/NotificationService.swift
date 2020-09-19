@@ -3,7 +3,7 @@ import SwiftUI
 import CoreLocation
 
 class NotificationService {
-    public func buildNotification(newReminder: MaskReminder, isEditing: Bool) {
+    public func buildNotification(newReminder: MaskReminderModel, isEditing: Bool) {
         let content = UNMutableNotificationContent()
 
         content.title = "Don't forget your mask"
@@ -17,17 +17,17 @@ class NotificationService {
         }
     }
 
-    private func isLocationBased(reminder: MaskReminder) -> Bool {
+    private func isLocationBased(reminder: MaskReminderModel) -> Bool {
         reminder.longitude != 0.0 && reminder.latitude != 0.0
     }
 
-    private func createBasicNotification(newReminder: MaskReminder, content: UNMutableNotificationContent, isEditing: Bool) {
+    private func createBasicNotification(newReminder: MaskReminderModel, content: UNMutableNotificationContent, isEditing: Bool) {
         for weekday in newReminder.daysOfWeek {
             if isEditing {
                 UNUserNotificationCenter
                     .current()
                     .removePendingNotificationRequests(
-                            withIdentifiers: ["\(weekday)_\(newReminder.id!.uuidString)"]
+                        withIdentifiers: ["\(weekday)_\(newReminder.id.uuidString)"]
                     )
             }
 
@@ -35,12 +35,12 @@ class NotificationService {
             dateComponents.calendar = Calendar.current
 
             dateComponents.weekday = self.parseWeekday(weekday: weekday)
-            dateComponents.hour = self.parseHour(date: newReminder.time!)
-            dateComponents.minute = self.parseMinute(date: newReminder.time!)
+            dateComponents.hour = self.parseHour(date: newReminder.time)
+            dateComponents.minute = self.parseMinute(date: newReminder.time)
 
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             let request = UNNotificationRequest(
-                identifier: "\(weekday)_\(newReminder.id!.uuidString)",
+                identifier: "\(weekday)_\(newReminder.id.uuidString)",
                 content: content,
                 trigger: trigger
             )
@@ -54,23 +54,23 @@ class NotificationService {
         }
     }
 
-    private func createLocationBasedNotification(newReminder: MaskReminder, content: UNMutableNotificationContent, isEditing: Bool) {
+    private func createLocationBasedNotification(newReminder: MaskReminderModel, content: UNMutableNotificationContent, isEditing: Bool) {
         if isEditing {
             UNUserNotificationCenter
                 .current()
                 .removePendingNotificationRequests(
-                        withIdentifiers: [newReminder.id!.uuidString]
+                    withIdentifiers: [newReminder.id.uuidString]
                 )
         }
 
         let centre = CLLocationCoordinate2D(latitude: newReminder.latitude, longitude: newReminder.longitude)
-        let region = CLCircularRegion(center: centre, radius: CLLocationDistance(newReminder.radius), identifier: newReminder.id!.uuidString)
+        let region = CLCircularRegion(center: centre, radius: CLLocationDistance(newReminder.radius), identifier: newReminder.id.uuidString)
 
         region.notifyOnExit = true
         region.notifyOnEntry = false
 
         let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
-        let request = UNNotificationRequest(identifier: newReminder.id!.uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: newReminder.id.uuidString, content: content, trigger: trigger)
 
         let notificationCentre = UNUserNotificationCenter.current()
 

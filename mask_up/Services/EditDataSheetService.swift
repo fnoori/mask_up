@@ -39,7 +39,7 @@ class EditDataSheetService {
             do {
                 try self.managedContext.save()
 
-                self.notificationService.buildNotification(newReminder: newReminder, isEditing: isEditing)
+                self.notificationService.buildNotification(newReminder: reminder, isEditing: isEditing)
             } catch {
                 print("Tried to save but an error occurred\n\(error.localizedDescription)")
             }
@@ -47,25 +47,25 @@ class EditDataSheetService {
     }
 
     private func editExistingReminder(reminder: MaskReminderModel) {
-        let newReminder = MaskReminder(context: self.managedContext)
-
-        newReminder.id = UUID()
-        newReminder.label = reminder.label
-
-        newReminder.latitude = reminder.latitude
-        newReminder.longitude = reminder.longitude
-        newReminder.radius = reminder.radius
-
-        newReminder.address = reminder.address
-        newReminder.time = reminder.time
-
-        newReminder.isActive = true
-        newReminder.daysOfWeek = reminder.daysOfWeek
+//        let newReminder = MaskReminder(context: self.managedContext)
+//
+//        newReminder.id = UUID()
+//        newReminder.label = reminder.label
+//
+//        newReminder.latitude = reminder.latitude
+//        newReminder.longitude = reminder.longitude
+//        newReminder.radius = reminder.radius
+//
+//        newReminder.address = reminder.address
+//        newReminder.time = reminder.time
+//
+//        newReminder.isActive = true
+//        newReminder.daysOfWeek = reminder.daysOfWeek
 
         do {
-            try coreDataUtility.updateData(updatedReminder: newReminder)
+            try coreDataUtility.updateData(updatedReminder: reminder)
 
-            self.notificationService.buildNotification(newReminder: newReminder, isEditing: true)
+            self.notificationService.buildNotification(newReminder: reminder, isEditing: true)
         } catch {
             print("Tried updating but an error occurred\n\(error.localizedDescription)")
         }

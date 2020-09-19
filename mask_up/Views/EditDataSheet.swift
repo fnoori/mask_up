@@ -18,6 +18,13 @@ struct EditDataSheet: View {
     @State var lat: Double = 0.0
     @State var long: Double = 0.0
 
+    @State var street: String = ""
+    @State var unitNumber: String = ""
+    @State var postCode: String = ""
+    @State var city: String = ""
+    @State var provinceState: String = ""
+    @State var country: String = ""
+
     let newDataSheetService = EditDataSheetService()
     var isEditing: Bool = false
 
@@ -47,7 +54,7 @@ struct EditDataSheet: View {
                     if !self.isEditing {
                         Section {
                             ReminderTypePicker(chosenReminderType: self.$chosenReminderType)
-                        }.pickerStyle(SegmentedPickerStyle())
+                        }
                     }
 
                     TextField("Label", text: self.$label)
@@ -57,7 +64,7 @@ struct EditDataSheet: View {
                             ReminderTimePicker(time: self.$time)
                         }
 
-                        Section(header: Text("some")) {
+                        Section(header: Text("Repeat Days")) {
                             DaysOfWeekPicker(daysOfWeek: self.$daysOfWeek)
                         }
                     } else {
@@ -85,17 +92,22 @@ struct EditDataSheet: View {
                         }
 
                         if self.autoLocate == false {
-                            Section(header: Text(""), footer: Text("If you don't want to use your location to set the reminder's centre, you can manually enter your address here.")) {
+                            Section(header: Text("Enter Address Manually"), footer: Text("If you don't want to use your location to set the reminder's centre, you can manually enter your address here.")) {
                                 ManualAddressEntry(
-                                    address: self.$address,
                                     latitude: self.$lat,
-                                    longitude: self.$long
+                                    longitude: self.$long,
+                                    address: self.$address,
+                                    street: self.$street,
+                                    unitNumber: self.$unitNumber,
+                                    postCode: self.$postCode,
+                                    city: self.$city,
+                                    provinceState: self.$provinceState,
+                                    country: self.$country
                                 )
                             }
                         }
                     }
                 }
-                .keyboardResponsive()
                 .navigationBarTitle("New Reminder", displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(action: {
@@ -125,6 +137,16 @@ struct EditDataSheet: View {
         self.reminderModel.address = self.address
 
         self.newDataSheetService.createNewReminder(reminder: self.reminderModel, isEditing: self.isEditing)
+    }
+
+    func determineAddress() {
+        var populatedAddress = ""
+
+        if self.unitNumber != "" {
+            populatedAddress += "\(self.unitNumber) - "
+        }
+
+        populatedAddress += "\(self.street), \(self.postCode), \(self.provinceState), \(self.country)"
     }
 
     func canPressDone() -> Bool {
